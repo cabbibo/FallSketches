@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>three.js webgl - dynamic procedural terrain</title>
+		<meta charset="utf-8">
+		<style type="text/css">
+			body {
+				background: #000;
+				color: #999;
+				padding: 0;
+				margin: 0;
+				overflow: hidden;
+				font-family: georgia;
+				font-size:1em;
+				text-align: center;
+			}
+
+			#info { margin-top: 2em	}
+
+			a { color: #fb0; }
+
+			#footer { width: 100%; margin: 2em auto; text-align: center; position: absolute; bottom: 0 }
+			.h { color: #fb0 }
+			.c { display: inline; margin-left: 1em }
+
+			#loading { width: 100%; margin: 2em auto; text-align: center; position: absolute; top: 25em  }
+
+			#oldie a { color:#da0 }
+
+			#stats { position: absolute; top:0; left: 0 }
+			#stats #fps { background: transparent !important }
+			#stats #fps #fpsText { color: #aaa !important }
+            #stats #fps #fpsGraph { display: none }
+
+            @font-face {
+              font-family: "GeoSans";
+              src: url("/lib/GeosansLight.ttf");
+            }
+
+
+		</style>
+	</head>
+
+	<body>
+		<div id="container"></div>
+
+<!--
+		<audio id="soundtrack" autoplay loop style="display:none">
+			<source src="sounds/Five_Armies.mp3" type='audio/mp3'>
+			<source src="sounds/Five_Armies.ogg" type='audio/ogg'>
+		</audio>
+-->
+		<script src="three.min.js"></script>
+
+		<script src="js/controls/TrackballControls.js"></script>
+
+		<script src="js/shaders/BleachBypassShader.js"></script>
+		<script src="js/shaders/ConvolutionShader.js"></script>
+		<script src="js/shaders/CopyShader.js"></script>
+		<script src="js/shaders/HorizontalTiltShiftShader.js"></script>
+		<script src="js/shaders/LuminosityShader.js"></script>
+		<script src="js/shaders/NormalMapShader.js"></script>
+		<script src="js/shaders/VerticalTiltShiftShader.js"></script>
+
+		<script src="js/postprocessing/EffectComposer.js"></script>
+		<script src="js/postprocessing/RenderPass.js"></script>
+		<script src="js/postprocessing/BloomPass.js"></script>
+		<script src="js/postprocessing/ShaderPass.js"></script>
+		<script src="js/postprocessing/MaskPass.js"></script>
+		<script src="js/postprocessing/SavePass.js"></script>
+
+		<script src="js/ShaderTerrain.js"></script>
+
+        <script src="js/loaders/OBJLoader.js"></script>
+		<script src="js/Detector.js"></script>
+        <script src="js/libs/stats.min.js"></script>
+
+        <script src="TextCreator.js"></script>
+        <script src="GrowBar.js"></script>
+        <script src="AudioController.js"></script>
+        <script src="Audio.js"></script>
+
+        <script src="MouseMoveControls.js"></script>
+        <script src="globalVars.js"></script>
+        <script src="vertShader1.js"></script>
+        <script src="fragShader1.js"></script>
+        <script src="initScene.js"></script>
+        <script src="initTerrain.js"></script>
+        <script src="initComposer.js"></script>
+        <script src="initSongs.js"></script>
+        <script src="initArch.js"></script>
+        <script src="initRaycaster.js"></script>
+        <script src="helperFunctions.js"></script>
+        <script src="render.js"></script>
+        
+        <script src="Wagner/Wagner.js"></script>
+        <script src="Wagner/ShaderLoader.js"></script>
+
+		<script>
+
+		
+
+
+            var projector;
+            var INTERSECTED;
+            var mouse = {};
+          
+            var textCreator;        
+
+            init();
+            animate();
+
+
+            textCreator =  new TextCreator( 200 );
+
+
+          function init() {
+
+           
+
+              //textCreator =  new TextCreator( 200 );
+              controller = new AudioController();
+
+
+              initScene();
+              initTerrain();
+              initComposer();
+              initArch();
+              initRaycaster();
+
+              //scene.add( TEXTMESH );
+
+          }
+
+      
+          function animate() {
+
+              requestAnimationFrame( animate );
+
+              render();
+              stats.update();
+
+          }
+
+            
+		</script>
+
+	</body>
+</html>
