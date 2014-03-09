@@ -16,11 +16,19 @@ var LineMaterial = new THREE.LineBasicMaterial({
   color: 0x4d4dff,
   blending: THREE.AdditiveBlending,
   transparent: true,
-  opacity: 1,
+  opacity: .4,
   linewidth: 3
 });
 
 function GrowBar( points ){
+
+  this.material = new THREE.LineBasicMaterial({
+  color: 0x4d4dff,
+  blending: THREE.AdditiveBlending,
+  transparent: true,
+  opacity: .4,
+  linewidth: 3
+});
 
   this.object = new THREE.Object3D();
 
@@ -30,20 +38,11 @@ function GrowBar( points ){
 
   for( var i = 0; i < points.length; i++ ){
     lineGeo.vertices.push( points[i] );
-    
-    
-    lineGeo.target = points[i];
-
-
-    var line = new THREE.Line( lineGeo , LineMaterial );
-
-    this.object.add( line );
-    this.segments.push( line );
-
   }
 
-  var line = new THREE.Line( lineGeo , LineMaterial );
+  var line = new THREE.Line( lineGeo , this.material );
 
+  this.line = line;
   this.object.add( line );
   this.segments.push( line );
 

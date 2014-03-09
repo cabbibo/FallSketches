@@ -4,7 +4,7 @@ function initRaycaster(){
   renderer.domElement.addEventListener( 'mousemove', onDocumentMouseMove, false );
   renderer.domElement.addEventListener( 'click', onClick, false );
   projector = new THREE.Projector();
-
+/*
   noiseTexture = THREE.ImageUtils.loadTexture( "textures/water.jpg");
   noiseNormals = THREE.ImageUtils.loadTexture( "textures/waterNormals.jpg");
 
@@ -52,7 +52,7 @@ transparent: true,
               opacity: 5,
     //          blending: THREE.AdditiveBlending,
               normalScale: new THREE.Vector3( 1 , 1 , -100 )
-            });
+            });*/
 
 
 
@@ -60,134 +60,127 @@ transparent: true,
 
 }
 
- function onDocumentMouseMove( event ) {
+function onDocumentMouseMove( event ) {
 
-              event.preventDefault();
-
-
-                var pos = [
-                  event.clientX,
-                  event.clientY - MARGIN,
-                ];
-
-                width = [
-                  window.innerWidth,
-                  window.innerHeight - MARGIN*2
-                ];
-
-				mouse.x =   ( pos[0] / width[0] ) * 2 - 1;
-				mouse.y = - ( pos[1] / width[1] ) * 2 + 1;
+  event.preventDefault();
 
 
-				//
+  var pos = [
+    event.clientX,
+    event.clientY - MARGIN,
+  ];
 
-				var vector = new THREE.Vector3( mouse.x, mouse.y, 0.5 );
-				projector.unprojectVector( vector, camera );
+  width = [
+    window.innerWidth,
+    window.innerHeight - MARGIN*2
+  ];
 
-				var raycaster = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
-
-                var objects = songObjects;
-
-                var intersects = raycaster.intersectObjects( objects , true );
-
-
-
-                if ( intersects.length > 0 ) {
-
-					if ( INTERSECTED != intersects[ 0 ].object ) {
-
-                      if ( INTERSECTED ){
-                        //INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
-                        if( !INTERSECTED.active )
-                          INTERSECTED.material = hoverOverMaterial;
-                        
-                        }
-
-                        INTERSECTED = intersects[ 0 ].object;
-
-                        if( !INTERSECTED.active )
-                          INTERSECTED.material = hoverOverMaterial;
-
-                        INTERSECTED.note.play();
-
-                        //INTERSECTED.material.color.setHex( 0xffffff);
-						
-					}
-
-					container.style.cursor = 'pointer';
-
-			  } else {
-
-                if ( INTERSECTED ) {
+  mouse.x =   ( pos[0] / width[0] ) * 2 - 1;
+  mouse.y = - ( pos[1] / width[1] ) * 2 + 1;
 
 
-                  if( !INTERSECTED.active )
-                    INTERSECTED.material = hoverOutMaterial;
-                    
-                    console.log( 'helllo' );
-                    //INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
+  //
 
-                  }
+  var vector = new THREE.Vector3( mouse.x, mouse.y, 0.5 );
+  projector.unprojectVector( vector, camera );
 
-					INTERSECTED = null;
+  var raycaster = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
 
-					container.style.cursor = 'auto';
+  var objects = songObjects;
 
-				}
-
-
-            }
+  var intersects = raycaster.intersectObjects( objects , true );
 
 
 
-            function onClick( event ){
+  if ( intersects.length > 0 ) {
 
-              if( INTERSECTED ){
+    if ( INTERSECTED != intersects[ 0 ].object ) {
 
-                if( INTERSECTED.active ){
+    
+      if ( INTERSECTED ){
 
-                  INTERSECTED.material = hoverOverMaterial;
-                  INTERSECTED.active = false;
+        console.log('SHSHS');
+        INTERSECTED.hoverOut();
+        //INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
+        
+      }
 
-                  
-                  UNACTIVATE( INTERSECTED );
+      INTERSECTED = intersects[ 0 ].object;
 
-                }else{
+      INTERSECTED.hoverOver();
 
-                  ACTIVATE( INTERSECTED );
+      container.style.cursor = 'pointer';
 
-                  INTERSECTED.active = true;
-                  INTERSECTED.material = clickMaterial;
+    }
 
-                }
+  } else {
 
-              }
+    if ( INTERSECTED ) {
 
+      INTERSECTED.hoverOut();
+  
+    }
 
-            }
+    INTERSECTED = null;
 
-
-            function ACTIVATE( mesh ){
-
-              console.log( 'TSSSS');
-              console.log( mesh );
-
-              mesh.titleMesh.material.opacity = 1.0
-              if( !mesh.track.playing )
-                mesh.track.play();
-              //notes[0].play();
+    container.style.cursor = 'auto';
 
 
-            }
+  }
+ 
 
-            function UNACTIVATE( mesh ){
-
-              mesh.titleMesh.material.opacity = .2
-
-              console.log( mesh.track );
-              if( mesh.track.playing )
-                mesh.track.stop();
+}
 
 
-            }
+
+function onClick( event ){
+
+  if( INTERSECTED ){
+
+    if( INTERSECTED.active ){
+
+      INTERSECTED.material = hoverOverMaterial;
+      INTERSECTED.active = false;
+
+      
+      UNACTIVATE( INTERSECTED );
+
+    }else{
+
+      ACTIVATE( INTERSECTED );
+
+      INTERSECTED.active = true;
+      INTERSECTED.material = clickMaterial;
+
+    }
+
+  }
+
+
+}
+
+
+function ACTIVATE( mesh ){
+
+  console.log( 'TSSSS');
+  console.log( mesh );
+
+  mesh.titleMesh.material.opacity = 1.0
+  if( !mesh.track.playing )
+    mesh.track.play();
+  //notes[0].play();
+
+
+}
+
+function UNACTIVATE( mesh ){
+
+  mesh.titleMesh.material.opacity = .2
+
+  console.log( mesh.track );
+  if( mesh.track.playing )
+    mesh.track.stop();
+
+
+}
 
