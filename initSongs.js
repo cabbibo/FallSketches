@@ -1,7 +1,13 @@
           
 
           var songs = [
-         
+        
+            [ 
+              "Dark Matter" , 
+              "audio/darkMatter.mp3"  ,   
+              '/audio/notes/2.mp3'  , 
+              [ 5 , -3.5 , 4.5  ] 
+            ],
             [ 
               "Moon"                , 
               "/audio/moon.mp3"     , 
@@ -9,33 +15,25 @@
               [ 4 , -2 , 4.5  ] 
             ],
 
-            
-            [ 
-              "Dark Matter" , 
-              "audio/darkMatter.mp3"  ,   
-              '/audio/notes/2.mp3'  , 
-              [ 5 , -4 , 4.5  ] 
-            ],
-
             [ 
               "Crystalline" , 
               "audio/crystalline.mp3" ,
               '/audio/notes/3.mp3'  , 
-              [ 2 , 1.5 , 4  ] 
+              [ 3.5 , -.5 , 4.5  ] 
             ],
 
             [ 
               "Cosmonogy"   , 
               "audio/cosmonogy.mp3"   ,   
               '/audio/notes/2.mp3'  , 
-              [ 3 , 1 , 4   ] 
+              [ 3 , 1.3 , 4.3   ] 
             ],
 
             [ 
               "Thunderbolt" ,
               "audio/thunderbolt.mp3" ,  
               '/audio/notes/2.mp3'  , 
-              [ 1 , 1 , 4.5   ] 
+              [ 1 , 2 , 4.5   ] 
             ],
 
           ];
