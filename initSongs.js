@@ -2,38 +2,64 @@
 
           var songs = [
         
-            [ 
-              "Dark Matter" , 
-              "audio/darkMatter.mp3"  ,   
-              '/audio/notes/1.mp3'  , 
-              [ 5 , -3.5 , 4.5  ] 
+            [   
+              "Dark Matter" ,             // Title
+              "audio/darkMatter.mp3"  ,   // song
+              '/audio/notes/1.mp3'  ,     // note
+              [ 5 , -3.5 , 4.5  ],        // position
+              [ .8 , 1.2 , .2   ],        // color
+              2.5,                         // NoiseSize
+              .1,                         // NoisePower
+              .4,                         // NoiseSpeed
+              .4,                         // AudioPower
+
             ],
             [ 
               "Moon"                , 
               "/audio/moon.mp3"     , 
               '/audio/notes/2.mp3'  ,   
-              [ 4 , -2 , 4.5  ] 
+              [ 4 , -2 , 4.5  ],
+              [ .3 , 1.2 , .7   ],        // color
+              .6,                         // NoiseSize
+              .2,                         // NoisePower
+              .9,                         // NoiseSpeed
+              .5,                         // AudioPower
             ],
 
             [ 
               "Crystalline" , 
               "audio/crystalline.mp3" ,
               '/audio/notes/3.mp3'  , 
-              [ 3.5 , -.5 , 4.5  ] 
+              [ 3.5 , -.5 , 4.5  ],
+              [ .3 , .4 , 1.2   ],        // color
+              .1,                         // NoiseSize
+              .1,                         // NoisePower
+              1.2,                         // NoiseSpeed
+              .4,                         // AudioPower
             ],
 
             [ 
               "Cosmonogy"   , 
               "audio/cosmonogy.mp3"   ,   
               '/audio/notes/4.mp3'  , 
-              [ 3 , 1.3 , 4.3   ] 
+              [ 3 , 1.3 , 4.3   ],
+              [ .6 , .4 , .7   ],        // color
+              .2,                         // NoiseSize
+              .5,                         // NoisePower
+              .9,                         // NoiseSpeed
+              .5,                         // AudioPower
             ],
 
             [ 
               "Thunderbolt" ,
               "audio/thunderbolt.mp3" ,  
               '/audio/notes/5.mp3'  , 
-              [ 1 , 2 , 4.5   ] 
+              [ 1 , 2 , 4.5   ],
+              [ 1.3 , .2 , .5   ],        // color
+              .6,                         // NoiseSize
+              .3,                         // NoisePower
+              .3,                         // NoiseSpeed
+              .6,                         // AudioPower
             ],
 
           ];
@@ -128,6 +154,8 @@ transparent: true,
               mesh.rotation.z = Math.random() * 2 * Math.PI;
 
               song = mesh;
+
+              song.params = s;
 
               song.title = s[0];
               song.track = new Audio( s[1] , audioController , false );
@@ -296,6 +324,24 @@ function activate(){
 
   }
 
+  var v = new THREE.Vector3(
+      this.params[4][0] ,
+      this.params[4][1] ,
+      this.params[4][2] 
+  );
+
+  pointLight.color = new THREE.Color( v.x , v.y , v.z );
+  MusicObject.material.uniforms.Color.value.fromArray(this.params[4] );
+  MusicObject.material.uniforms.NoiseSize.value  = this.params[5];
+  MusicObject.material.uniforms.NoisePower.value = this.params[6];
+  MusicObject.material.uniforms.NoiseSpeed.value = this.params[7];
+  MusicObject.material.uniforms.AudioPower.value = this.params[8];
+  /*[ 1.3 , .2 , .5   ],        // color
+          .6,                         // NoiseSize
+          .5,                         // NoisePower
+          .2,                         // NoiseSpeed
+          .3,                         // AudioPower
+          */
 
 
   console.log('SS');

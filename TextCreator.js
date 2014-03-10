@@ -132,7 +132,7 @@ function TextCreator( size ){
       //blending:     THREE.AdditiveBlending,
         
       opacity:      .3,
-      color:        0x4D4DFF
+      color:        0xffffFF
     });
 
     var geo = new THREE.PlaneGeometry( 

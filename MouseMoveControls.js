@@ -7,7 +7,9 @@ THREE.MouseMoveControls = function ( object, domElement ) {
 
       this.enabled = true;
 
-      this.z = 400;
+      this.z = 550;
+      this.x = 0;
+      this.y = 150;
       this.speed =  .05;
       this.zoomSpeed =  .01;
 
@@ -22,11 +24,11 @@ THREE.MouseMoveControls = function ( object, domElement ) {
       this.update = function () {
 
         if( this.object.position.z > 0 ){
-          this.object.position.x += ( this.mouse.x - this.object.position.x ) * this.speed;
-          this.object.position.y += ( this.mouse.y - this.object.position.y ) * this.speed;
+          this.object.position.x += ( ( this.mouse.x - this.object.position.x ) + this.x ) * this.speed;
+          this.object.position.y += ( (this.mouse.y - this.object.position.y  ) + this.y ) * this.speed;
         }else{
-          this.object.position.x -= ( this.mouse.x - this.object.position.x ) * this.speed;
-          this.object.position.y -= ( this.mouse.y - this.object.position.y ) * this.speed;
+          this.object.position.x -= ( ( this.mouse.x - this.object.position.x ) + this.x ) * this.speed;
+          this.object.position.y -= ( ( this.mouse.y - this.object.position.y ) + this.y ) * this.speed;
         }
 
 

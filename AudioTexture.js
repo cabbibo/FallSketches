@@ -16,7 +16,7 @@
     canvas.style.left       = '100px';
 
     // uncomment to see texture in upper left corner
-    document.body.appendChild( canvas );
+    //document.body.appendChild( canvas );
     
     canvas.width = pixels;
     canvas.height = 1;

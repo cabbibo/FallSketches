@@ -2,6 +2,7 @@ function initScene(){
 
   time = 0;
   container = document.getElementById( 'container' );
+  //container.style.border = '1px  solid  white';
 
   soundtrack = document.getElementById( "soundtrack" );
 
@@ -52,6 +53,10 @@ function initScene(){
 				renderer.domElement.style.position = "absolute";
 				renderer.domElement.style.top = MARGIN + "px";
 				renderer.domElement.style.left = "0px";
+                /*renderer.domElement.style.borderTop = '1px  solid  white';
+                renderer.domElement.style.borderBottom = '1px  solid  white';*/
+
+                renderer.domElement.id = 'RENDERER';
 
 				container.appendChild( renderer.domElement );
 
@@ -64,7 +69,7 @@ function initScene(){
 				// STATS
 
 				stats = new Stats();
-				container.appendChild( stats.domElement );
+				//container.appendChild( stats.domElement );
 
 				// EVENTS
 

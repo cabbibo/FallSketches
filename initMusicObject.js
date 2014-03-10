@@ -86,6 +86,7 @@ var vertexShader = [
   "uniform float NoisePower;",
   "uniform float AudioPower;",
   "uniform float NoiseSize;",
+  "uniform float NoiseSpeed;",
 
   "varying vec2 vUv;",
   "varying float vDisplacement;",
@@ -105,8 +106,8 @@ var vertexShader = [
 
     "vec3 nPos = normalize( position );",
 
-    "offset.x = nPos.x + cos( Time );",
-    "offset.y = nPos.y + sin( Time );",
+    "offset.x = nPos.x + cos( 1. * Time * NoiseSpeed );",
+    "offset.y = nPos.y + sin( 1. * Time * NoiseSpeed );",
     "offset.z = nPos.z;", //+ tan( time / 100.0 );",
     "offset *= NoiseSize;",
 
@@ -130,18 +131,20 @@ var fragmentShader = [
   "uniform float NoisePower;",
   "uniform float AudioPower;",
   "uniform float NoiseSize;",
+  "uniform float NoiseSpeed;",
+
 
   "varying vec2 vUv;",
   "varying float vDisplacement;",
   "varying vec3 vPos;",
 
   "void main(){",
-    "vec2 sample = vec2( vUv.x , 0.0 );",
+    "vec2 sample = vec2( vUv.y , 0.0 );",
     "vec4 a = texture2D( AudioTexture , sample );",
 
-    "vec3 c = Color;",
-    "c *= vDisplacement - .3 ;",
-    "gl_FragColor = vec4( c , 1.0);",
+    "vec3 c = Color + a.xyz;",
+    "c *= 2. * vDisplacement - 1.2 ;",
+    "gl_FragColor = vec4( c  , 1.0);",
 
   "}"
 
@@ -155,7 +158,7 @@ function initMusicObject(){
 
   console.log( 'CENTER OBJECT' );
 
-  var color = new THREE.Vector3( .3 , .3 , .9 );
+  var color = new THREE.Vector3( 1.9 , .9 , .3 );
 
   //TIME = 0;
 
@@ -166,6 +169,7 @@ function initMusicObject(){
     NoisePower:   { type:"f", value:.4                  },
     AudioPower:   { type:"f", value:.4                   },
     NoiseSize:   { type:"f", value:.4                  },
+    NoiseSpeed:   { type:"f", value:.4                  },
     Time:   { type:"f", value:TIME              }
 
   }
@@ -209,9 +213,12 @@ function initMusicObject(){
 function MusicObjectUpdate(){
 
   //TIME += clock.getDelta();
+  console.log( TIME );
 
   this.material.uniforms.Time.value = TIME;
 
-  this.rotation.y += .01;
+  this.rotation.y += .001;
+  this.rotation.x += .0014;
+  this.rotation.z += .0024;
 
 }
