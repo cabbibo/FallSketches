@@ -151,6 +151,8 @@ transparent: true,
 
               song.hoverOver = hoverOver.bind( song );
               song.hoverOut = hoverOut.bind( song );
+              song.activate = activate.bind( song );
+              song.deactivate = deactivate.bind( song );
 
 
               //var lefPosition = new THREE.
@@ -269,8 +271,46 @@ function hoverOut(){
     this.growBar.material.opacity = .3;
     this.titleMesh.material.opacity = .3;
   }
-
-
  // this.note.play();
+
+}
+
+function activate(){
+
+  this.active = true;
+  this.material = clickMaterial;
+
+ 
+  for( var i = 0; i < songObjects.length; i++ ){
+
+    if( songObjects[i] != this ){
+      if( songObjects[i].active );
+        songObjects[i].deactivate();
+    }
+  }
+
+  if( !this.track.playing ){
+
+    console.log( this.track );
+    this.track.play();
+
+  }
+
+
+
+  console.log('SS');
+
+
+}
+
+function deactivate(){
+
+  this.active = false;
+  this.material = hoverOverMaterial;
+  this.titleMesh.material.opacity = .2;
+  this.growBar.material.opacity = .2;
+
+  if( this.track.playing )
+    this.track.stop();
 
 }

@@ -1,5 +1,6 @@
 function initScene(){
 
+  time = 0;
   container = document.getElementById( 'container' );
 
   soundtrack = document.getElementById( "soundtrack" );

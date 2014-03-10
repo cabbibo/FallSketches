@@ -1,4 +1,6 @@
-	function render() {
+var TIME = 0;	
+
+function render() {
 
                 //animateRig( handMesh );
       
@@ -13,6 +15,7 @@
       MusicObject.update();
                 var delta = clock.getDelta();
 
+                TIME += delta;
 				soundVal = THREE.Math.clamp( soundVal + delta * soundDir, 0, 1 );
 
 				if ( soundVal !== oldSoundVal ) {
@@ -94,7 +97,7 @@
                     //model.material = modelMaterial;
                     composer.render( scene, camera );
 
-                   /* if( SSAOPass.isLoaded() ) {
+                    /*if( SSAOPass.isLoaded() ) {
                         SSAOPass.shader.uniforms.tDepth.value = depthTexture;
                         //composer.pass( SSAOPass );
                     }*/

@@ -139,23 +139,15 @@ function onClick( event ){
 
     if( INTERSECTED.active ){
 
-      INTERSECTED.material = hoverOverMaterial;
-      INTERSECTED.active = false;
-
-      
-      UNACTIVATE( INTERSECTED );
+      INTERSECTED.deactivate();
 
     }else{
 
-      ACTIVATE( INTERSECTED );
-
-      INTERSECTED.active = true;
-      INTERSECTED.material = clickMaterial;
-
+      INTERSECTED.activate();
+     
     }
 
   }
-
 
 }
 

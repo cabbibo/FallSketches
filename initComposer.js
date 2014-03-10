@@ -16,7 +16,7 @@ function initComposer(){	// COMPOSER
 	dirtPass = new WAGNER.DirtPass();
 	blendPass = new WAGNER.BlendPass();
 	guidedFullBoxBlurPass = new WAGNER.GuidedFullBoxBlurPass();
-    //	SSAOPass = new WAGNER.SSAOPass();
+   // SSAOPass = new WAGNER.SSAOPass();
 
     multiPassBloomPass.params.blurAmount = 20;
     console.log( multiPassBloomPass );

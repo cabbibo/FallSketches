@@ -131,7 +131,7 @@ function TextCreator( size ){
       side:         THREE.DoubleSide,
       //blending:     THREE.AdditiveBlending,
         
-      opacity:      .1,
+      opacity:      .3,
       color:        0x4D4DFF
     });
 
