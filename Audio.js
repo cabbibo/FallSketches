@@ -100,7 +100,7 @@ Audio.prototype.createSource = function() {
          
   this.source.connect( this.gain  );
 
-  this.gain.gain.value = 1;
+  //this.gain.gain.value = 1;
 
   this.gain.connect( this.analyzer );
 

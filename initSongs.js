@@ -5,13 +5,13 @@
             [ 
               "Dark Matter" , 
               "audio/darkMatter.mp3"  ,   
-              '/audio/notes/2.mp3'  , 
+              '/audio/notes/1.mp3'  , 
               [ 5 , -3.5 , 4.5  ] 
             ],
             [ 
               "Moon"                , 
               "/audio/moon.mp3"     , 
-              '/audio/notes/1.mp3'  ,   
+              '/audio/notes/2.mp3'  ,   
               [ 4 , -2 , 4.5  ] 
             ],
 
@@ -25,14 +25,14 @@
             [ 
               "Cosmonogy"   , 
               "audio/cosmonogy.mp3"   ,   
-              '/audio/notes/2.mp3'  , 
+              '/audio/notes/4.mp3'  , 
               [ 3 , 1.3 , 4.3   ] 
             ],
 
             [ 
               "Thunderbolt" ,
               "audio/thunderbolt.mp3" ,  
-              '/audio/notes/2.mp3'  , 
+              '/audio/notes/5.mp3'  , 
               [ 1 , 2 , 4.5   ] 
             ],
 
@@ -95,7 +95,7 @@ transparent: true,
 
          // var textCreator = new TextCreator( 200 );
 
-             function initSongs( position , scale ){
+            function initSongs( position , scale ){
 
             songObject = new THREE.Object3D();
             songObject.position = position;
@@ -130,8 +130,10 @@ transparent: true,
               song = mesh;
 
               song.title = s[0];
-              song.track = new Audio( s[1] , controller , false );
-              song.note  = new Audio( s[2] , controller , false );
+              song.track = new Audio( s[1] , audioController , false );
+              song.note  = new Audio( s[2] , audioController , false );
+
+              song.note.gain.gain.value = .1;
 
               song.position = new THREE.Vector3( s[3][0] , s[3][1] , s[3][2] );
               song.position.multiplyScalar( scale );
@@ -181,7 +183,7 @@ transparent: true,
 
               position8 = position7.clone();
               position8.y = 250;
-              position8.x += 50 + ( i* 10 );
+              position8.x += 50 + ( i * 10 );
 
 
               endPosition = song.position.clone();

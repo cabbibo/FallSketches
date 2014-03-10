@@ -79,6 +79,7 @@
         <script src="GrowBar.js"></script>
         <script src="AudioController.js"></script>
         <script src="Audio.js"></script>
+        <script src="AudioTexture.js"></script>
 
         <script src="MouseMoveControls.js"></script>
         <script src="globalVars.js"></script>
@@ -90,6 +91,7 @@
         <script src="initSongs.js"></script>
         <script src="initArch.js"></script>
         <script src="initRaycaster.js"></script>
+        <script src="initMusicObject.js"></script>
         <script src="helperFunctions.js"></script>
         <script src="render.js"></script>
         
@@ -119,7 +121,7 @@
            
 
               //textCreator =  new TextCreator( 200 );
-              controller = new AudioController();
+              audioController = new AudioController();
 
 
               initScene();
@@ -127,6 +129,7 @@
               initComposer();
               initArch();
               initRaycaster();
+              initMusicObject();
 
               //scene.add( TEXTMESH );
 

@@ -23,12 +23,12 @@ var LineMaterial = new THREE.LineBasicMaterial({
 function GrowBar( points ){
 
   this.material = new THREE.LineBasicMaterial({
-  color: 0x4d4dff,
-  blending: THREE.AdditiveBlending,
-  transparent: true,
-  opacity: .4,
-  linewidth: 3
-});
+    color: 0x4d4dff,
+    blending: THREE.AdditiveBlending,
+    transparent: true,
+    opacity: .4,
+    linewidth: 3
+  });
 
   this.object = new THREE.Object3D();
 

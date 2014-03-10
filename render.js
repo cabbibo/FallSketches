@@ -9,6 +9,8 @@
 
         }*/
 
+      audioController.update();
+      MusicObject.update();
                 var delta = clock.getDelta();
 
 				soundVal = THREE.Math.clamp( soundVal + delta * soundDir, 0, 1 );

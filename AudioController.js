@@ -15,6 +15,7 @@ function AudioController(){
   this.analyzer.frequencyBinCount = 1024;
   this.analyzer.array = new Uint8Array( this.analyzer.frequencyBinCount );
 
+  this.texture = AudioTexture( this );
   this.gain.connect( this.analyzer );
   this.analyzer.connect( this.ctx.destination );
 
@@ -27,6 +28,7 @@ AudioController.prototype.update = function(){
 
   this.analyzer.getByteFrequencyData( this.analyzer.array );
 
+  this.texture.update();
   for( var i = 0; i < this.notes.length; i++ ){
 
     this.notes[i].update();
