@@ -7,7 +7,7 @@ THREE.MouseMoveControls = function ( object, domElement ) {
 
       this.enabled = true;
 
-      this.z = 550;
+      this.z = 650;
       this.x = 0;
       this.y = 150;
       this.speed =  .05;
