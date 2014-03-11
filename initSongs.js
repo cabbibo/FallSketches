@@ -1,23 +1,22 @@
-          
+
 
           var songs = [
         
             [   
               "Bleep Bloop" ,             // Title
               "audio/bleepBloop.mp3"  ,   // song
-              '/audio/notes/1.mp3'  ,     // note
+              'audio/notes/1.mp3'  ,     // note
               [ 4.5 , -2.0 , 2.2  ],        // position
               [ .8 , 1.2 , .2   ],        // color
               2.5,                         // NoiseSize
               .1,                         // NoisePower
               .4,                         // NoiseSpeed
               .4,                         // AudioPower
-
             ],
             [ 
               "OPN"                , 
-              "/audio/opn.mp3"     , 
-              '/audio/notes/2.mp3'  ,   
+              "audio/opn.mp3"     , 
+              'audio/notes/2.mp3'  ,   
               [ 4.5 , 0 , 2.2  ],
               [ .3 , 1.2 , .7   ],        // color
               .6,                         // NoiseSize
@@ -29,7 +28,7 @@
             [ 
               "Don't Really Care" , 
               "audio/dontReallyCare.mp3" ,
-              '/audio/notes/3.mp3'  , 
+              'audio/notes/3.mp3'  , 
               [ 3.6 , 1.6 , 1.5  ],
               [ .3 , .4 , 1.2   ],        // color
               .1,                         // NoiseSize
@@ -41,7 +40,7 @@
             [ 
               "Calvin Preys"   , 
               "audio/calvinPreys.mp3"   ,   
-              '/audio/notes/4.mp3'  , 
+              'audio/notes/4.mp3'  , 
               [ 2.5 , 3 , 1.5   ],
               [ .6 , .4 , .7   ],        // color
               .2,                         // NoiseSize
@@ -53,7 +52,7 @@
             [ 
               "Little Bit Frightened" ,
               "audio/littleBitFrightened.mp3" ,  
-              '/audio/notes/5.mp3'  , 
+              'audio/notes/5.mp3'  , 
               [ 1.5 , 4., 3.   ],
               [ 1.3 , .2 , .5   ],        // color
               .6,                         // NoiseSize
@@ -65,24 +64,24 @@
             [ 
               "Holly" ,
               "audio/holly.mp3" ,  
-              '/audio/notes/5.mp3'  , 
+              'audio/notes/6.mp3'  , 
               [ -1.0  , 5.0 , 2.   ],
-              [ 1.3 , .2 , .5   ],        // color
-              .6,                         // NoiseSize
+              [ .3 , .2 , .5   ],        // color
+              1.2,                         // NoiseSize
               .3,                         // NoisePower
               .3,                         // NoiseSpeed
-              .6,                         // AudioPower
+              .9,                         // AudioPower
             ],
 
             [ 
               "Tongue Wrong Song" ,
               "audio/tongueWrongSong.mp3" ,  
-              '/audio/notes/5.mp3'  , 
+              'audio/notes/7.mp3'  , 
               [ - 3.0 , 4.5 , 1.5   ],
-              [ 1.3 , .2 , .5   ],        // color
-              .6,                         // NoiseSize
-              .3,                         // NoisePower
-              .3,                         // NoiseSpeed
+              [ 1.0 , 1.0 , .5   ],        // color
+              .1,                         // NoiseSize
+              .6,                         // NoisePower
+              1.2,                         // NoiseSpeed
               .6,                         // AudioPower
             ],
 
@@ -358,6 +357,8 @@ function activate(){
   if( lightDir > 0 ){
     lightDir *= -1;
   }
+
+  controls.z = 2000;
  
   for( var i = 0; i < songObjects.length; i++ ){
 
@@ -393,7 +394,6 @@ function activate(){
           .3,                         // AudioPower
           */
 
-
   console.log('SS');
 
 
@@ -422,6 +422,8 @@ function deactivate(){
 
     if( lightDir < 0 )
       lightDir *= -1;
+
+     controls.z = 3000;
 
   }
 

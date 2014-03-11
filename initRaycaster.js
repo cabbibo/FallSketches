@@ -4,59 +4,6 @@ function initRaycaster(){
   renderer.domElement.addEventListener( 'mousemove', onDocumentMouseMove, false );
   renderer.domElement.addEventListener( 'click', onClick, false );
   projector = new THREE.Projector();
-/*
-  noiseTexture = THREE.ImageUtils.loadTexture( "textures/water.jpg");
-  noiseNormals = THREE.ImageUtils.loadTexture( "textures/waterNormals.jpg");
-
-  var mapHeight = THREE.ImageUtils.loadTexture( "textures/water.jpg");
-  mapHeight.anisotropy = 4;
-      mapHeight.repeat.set( 0.998, 0.998 );
-      mapHeight.offset.set( 0.001, 0.001 )
-      mapHeight.wrapS = mapHeight.wrapT = THREE.RepeatWrapping;
-      mapHeight.format = THREE.RGBFormat;
-
-  hoverOverMaterial = new THREE.MeshPhongMaterial({
-    color:0xff9999,
-    map: noiseTexture,
-    normalMap: noiseNormals,
-    bumpMap: noiseTexture,
-    bumpScale: 1000,
-    shininess: 100,
-   // blending: THREE.AdditiveBlending,
-transparent: true,
-    opacity: 5,
-
-    normalScale: new THREE.Vector3( 1 , 1 , -100 )
-  });
-  hoverOutMaterial = new THREE.MeshPhongMaterial({
-    color:0xaa6666,
-    map: noiseTexture,
-    normalMap: noiseNormals,
-    bumpMap: noiseTexture,
-    bumpScale: 1000,
-    shininess: 100,
-    //blending: THREE.AdditiveBlending,
-transparent: true,
-    opacity: 5,
-    normalScale: new THREE.Vector3( 1 , 1 , -100 )
-
-  });
-  clickMaterial = new THREE.MeshPhongMaterial({
-    color:0xffffff,
-    map: noiseTexture,
-    normalMap: noiseNormals,
-    bumpMap: noiseTexture,
-    bumpScale: 1000,
-              shininess: 100,
-              transparent: true,
-              opacity: 5,
-    //          blending: THREE.AdditiveBlending,
-              normalScale: new THREE.Vector3( 1 , 1 , -100 )
-            });*/
-
-
-
-
 
 }
 
@@ -99,7 +46,6 @@ function onDocumentMouseMove( event ) {
     
       if ( INTERSECTED ){
 
-        console.log('SHSHS');
         INTERSECTED.hoverOut();
         //INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
         

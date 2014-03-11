@@ -2,7 +2,7 @@ function Loader(){
 
   this.params =  {
     numberToLoad:   10,
-    loadGif:        "/lib/loadGif.gif",
+    loadGif:        "lib/loadGif.gif",
     videoWidth: 500,
     videoHeight: 281,
     failureTitleText: "This project requires the following:",

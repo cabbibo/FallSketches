@@ -187,7 +187,7 @@ function initMusicObject(){
 
 
   var s = 200
-  var geometry = new THREE.CubeGeometry( s , s , s , 100 , 100 , 100 );
+  //var geometry = new THREE.CubeGeometry( s , s , s , 100 , 100 , 100 );
   var geometry = new THREE.IcosahedronGeometry( s , 6 );
 
  /* var material = new THREE.MeshBasicMaterial({
@@ -197,7 +197,8 @@ function initMusicObject(){
   MusicObject = new THREE.Mesh( geometry , material );
 
   MusicObject.position.z = 300;
-  MusicObject.position.x = 50;
+  MusicObject.position.x = 0;
+  MusicObject.position.y = 50;
 
   MusicObject.rotation.x = Math.PI / 4;
   MusicObject.rotation.y = Math.PI / 4;

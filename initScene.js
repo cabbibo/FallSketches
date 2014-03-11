@@ -30,7 +30,7 @@ function initScene(){
   // SCENE (FINAL)
 
   scene = new THREE.Scene();
-  scene.fog = new THREE.Fog( 0x000000, 20, 40000 );
+  scene.fog = new THREE.Fog( 0x000000, 4000, 5000 );
 
   // LIGHTS
 

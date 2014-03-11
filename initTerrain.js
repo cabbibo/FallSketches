@@ -107,7 +107,7 @@ function initTerrain(){
 
 				// TERRAIN MESH
 
-				var geometryTerrain = new THREE.PlaneGeometry( 6000, 6000, 256, 256 );
+				var geometryTerrain = new THREE.PlaneGeometry( 6000, 6000, 100 , 100 );
 
 				geometryTerrain.computeFaceNormals();
 				geometryTerrain.computeVertexNormals();
