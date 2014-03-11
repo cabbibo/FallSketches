@@ -32,14 +32,19 @@ Stream.prototype.createSource = function(){
 
   var ctx = this.controller.ctx;
 
-  this.audio = new Audio();
+  var audio = new Audio();
+  audio.preload = "none";
+  audio.src = this.file;
+  audio.loop = true;
+  this.audio = audio;
+  this.audio.load();
 
-  this.audio.preload = 'none';
-
-  this.audio.src = this.file;
-
+ // this.audio.currentTime = 0;
   this.source = ctx.createMediaElementSource( this.audio );
   this.source.connect( this.gain );
+
+  //this.audio.currentTime = 0;
+  //this.source.currentTime = 0;
 
 }
 
@@ -97,8 +102,12 @@ Stream.prototype.stop = function(){
 
     console.log( 'HELLO' );
    // this.audio.stop();
+   //
+    this.audio.pause();
     this.playing = false;
-    
+  
+    //this.audio.currentTime = 0;
+    //this.source.currentTime = 0;
    // this.gain.disconnect( this.source );
     
     this.source = undefined;

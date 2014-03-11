@@ -220,6 +220,13 @@ transparent: true,
               song.activate = activate.bind( song );
               song.deactivate = deactivate.bind( song );
 
+              /*song.titleMesh.hoverOver = hoverOver.bind( song );
+              song.titleMesh.hoverOut = hoverOut.bind( song );
+              song.titleMesh.activate = activate.bind( song );
+              song.titleMesh.deactivate = deactivate.bind( song );*/
+
+
+
 
               //var lefPosition = new THREE.
               var leftPosition  = song.titleMesh.position.clone();
@@ -316,6 +323,7 @@ transparent: true,
   
               songObject.add( song );
               songObjects.push( song );
+              //songObjects.push( song.titleMesh );
 
             }
 
@@ -358,7 +366,7 @@ function activate(){
     lightDir *= -1;
   }
 
-  controls.z = 2000;
+  controls.z = 2500;
  
   for( var i = 0; i < songObjects.length; i++ ){
 
@@ -423,7 +431,7 @@ function deactivate(){
     if( lightDir < 0 )
       lightDir *= -1;
 
-     controls.z = 3000;
+     controls.z = 3500;
 
   }
 
