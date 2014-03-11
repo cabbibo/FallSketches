@@ -109,7 +109,7 @@ function onDocumentMouseMove( event ) {
 
       INTERSECTED.hoverOver();
 
-      container.style.cursor = 'pointer';
+      //container.style.cursor = 'pointer';
 
     }
 
@@ -123,7 +123,7 @@ function onDocumentMouseMove( event ) {
 
     INTERSECTED = null;
 
-    container.style.cursor = 'auto';
+    //container.style.cursor = 'auto';
 
 
   }

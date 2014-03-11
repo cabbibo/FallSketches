@@ -1,6 +1,6 @@
 	body {
 				//background: #000;
-				color: #999;
+				color: #000;
 				padding: 0;
 				margin: 0;
 				overflow: hidden;
@@ -8,6 +8,9 @@
 				font-size:1em;
                 text-align: center;
                 background:url('lib/burried.png');
+                cursor: url('lib/cursorWhite.png'), auto;
+                font-family: "GeoSans";
+
 			}
 
 			#info { margin-top: 2em	}
@@ -31,7 +34,7 @@
 
               border-top: 1px  solid  #999999;
               border-bottom: 1px  solid  #999999;
-              box-shadow: 0px 1px 50px #999999;
+              //box-shadow: 0px 1px 50px #999999 inset;
 
             }
 
@@ -109,7 +112,68 @@
   text-align    : center;
   //background    : #fff;
 
+}
 
+#title{
+
+  color:#fff;
+
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  z-index: 999;
+}
+
+#social{
+
+  pointer-events  : auto;
+
+  position:absolute;
+  right:10px;
+  bottom:10px;
+
+  zIndex:999;
+  width:100%;
 
 }
+
+.social{
+
+
+  margin: 5px;
+  width:25px;
+  height:25px;
+  display: block;
+
+  opacity:.3;
+  background-size: 100%;
+
+  float:right;
+}
+.social:hover{
+
+  opacity: .7;
+
+}
+
+
+#facebook{
+  background: url("lib/facebook_1.png");
+}
+
+#twitter{
+  background: url("lib/twitter_1.png");
+}
+
+#soundcloud{
+   //background: url("lib/facebook_1.png");
+  background-size: 10%;
+  background: url("lib/soundcloud_1.png");
+}
+
+#cabbibo{
+  background: url("lib/cabbibo_1.png");
+}
+
+
 
