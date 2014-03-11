@@ -4,7 +4,7 @@
         
             [   
               "Bleep Bloop" ,             // Title
-              "audio/darkMatter.mp3"  ,   // song
+              "audio/bleepBloop.mp3"  ,   // song
               '/audio/notes/1.mp3'  ,     // note
               [ 4.5 , -2.0 , 2.2  ],        // position
               [ .8 , 1.2 , .2   ],        // color
@@ -16,7 +16,7 @@
             ],
             [ 
               "OPN"                , 
-              "/audio/moon.mp3"     , 
+              "/audio/opn.mp3"     , 
               '/audio/notes/2.mp3'  ,   
               [ 4.5 , 0 , 2.2  ],
               [ .3 , 1.2 , .7   ],        // color
@@ -28,7 +28,7 @@
 
             [ 
               "Don't Really Care" , 
-              "audio/crystalline.mp3" ,
+              "audio/dontReallyCare.mp3" ,
               '/audio/notes/3.mp3'  , 
               [ 3.6 , 1.6 , 1.5  ],
               [ .3 , .4 , 1.2   ],        // color
@@ -40,7 +40,7 @@
 
             [ 
               "Calvin Preys"   , 
-              "audio/cosmonogy.mp3"   ,   
+              "audio/calvinPreys.mp3"   ,   
               '/audio/notes/4.mp3'  , 
               [ 2.5 , 3 , 1.5   ],
               [ .6 , .4 , .7   ],        // color
@@ -52,7 +52,7 @@
 
             [ 
               "Little Bit Frightened" ,
-              "audio/thunderbolt.mp3" ,  
+              "audio/littleBitFrightened.mp3" ,  
               '/audio/notes/5.mp3'  , 
               [ 1.5 , 4., 3.   ],
               [ 1.3 , .2 , .5   ],        // color
@@ -64,7 +64,7 @@
 
             [ 
               "Holly" ,
-              "audio/thunderbolt.mp3" ,  
+              "audio/holly.mp3" ,  
               '/audio/notes/5.mp3'  , 
               [ -1.0  , 5.0 , 2.   ],
               [ 1.3 , .2 , .5   ],        // color
@@ -76,7 +76,7 @@
 
             [ 
               "Tongue Wrong Song" ,
-              "audio/thunderbolt.mp3" ,  
+              "audio/tongueWrongSong.mp3" ,  
               '/audio/notes/5.mp3'  , 
               [ - 3.0 , 4.5 , 1.5   ],
               [ 1.3 , .2 , .5   ],        // color
@@ -94,10 +94,24 @@
           var songObject;
 
           
-  noiseTexture = THREE.ImageUtils.loadTexture( "textures/water.jpg");
-  noiseNormals = THREE.ImageUtils.loadTexture( "textures/waterNormals.jpg");
+  noiseTexture = THREE.ImageUtils.loadTexture( 
+      "textures/water.jpg",
+      THREE.UVMapping , 
+      function(){ loader.loadBarAdd();	}
+  );
+  noiseNormals = THREE.ImageUtils.loadTexture( 
+      "textures/waterNormals.jpg", 
+      THREE.UVMapping , 
+      function(){ loader.loadBarAdd();	 }
+  );
 
-  var mapHeight = THREE.ImageUtils.loadTexture( "textures/water.jpg");
+  var mapHeight = THREE.ImageUtils.loadTexture(
+      "textures/water.jpg",
+      THREE.UVMapping , 
+      function(){ loader.loadBarAdd();	}
+  );
+
+
   mapHeight.anisotropy = 4;
       mapHeight.repeat.set( 0.998, 0.998 );
       mapHeight.offset.set( 0.001, 0.001 )
@@ -184,8 +198,8 @@ transparent: true,
               song.params = s;
 
               song.title = s[0];
-              song.track = new Audio( s[1] , audioController , false );
-              song.note  = new Audio( s[2] , audioController , false );
+              song.track = new Stream( s[1] , audioController , false );
+              song.note  = new Note( s[2] , audioController , false );
 
               song.note.gain.gain.value = .1;
 
@@ -195,7 +209,6 @@ transparent: true,
               song.titleMesh = textCreator.createMesh( song.title );
 
  
-              console.log( song.titleMesh.scaledWidth );
 
               var w = song.titleMesh.scaledWidth;
               var offset = w * scale / 2;                                 
@@ -290,7 +303,6 @@ transparent: true,
               
 
 
-              console.log( song.titleMesh.position );
               //song.titleMesh.position.y += 200;
               
               songObject.add( song.titleMesh );
@@ -343,6 +355,9 @@ function activate(){
   this.active = true;
   this.material = clickMaterial;
 
+  if( lightDir > 0 ){
+    lightDir *= -1;
+  }
  
   for( var i = 0; i < songObjects.length; i++ ){
 
@@ -393,5 +408,22 @@ function deactivate(){
 
   if( this.track.playing )
     this.track.stop();
+
+  var anyActive = false;
+
+  for( var i = 0; i < songObjects.length; i++ ){
+
+    if( songObjects[i].active ) anyActive = true;
+
+  }
+
+  //console.log( anyActive );
+  if( !anyActive ){
+
+    if( lightDir < 0 )
+      lightDir *= -1;
+
+  }
+
 
 }

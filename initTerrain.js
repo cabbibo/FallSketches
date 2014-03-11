@@ -33,13 +33,13 @@ function initTerrain(){
 
 				diffuseTexture1 = THREE.ImageUtils.loadTexture( "textures/terrain/grasslight-big.jpg", null, function () {
 
-					loadTextures();
+				    loader.loadBarAdd();	loadTextures();	
 					applyShader( THREE.LuminosityShader, diffuseTexture1, specularMap );
 
 				} );
 
-				diffuseTexture2 = THREE.ImageUtils.loadTexture( "textures/terrain/backgrounddetailed6.jpg", null, loadTextures );
-				detailTexture = THREE.ImageUtils.loadTexture( "textures/terrain/grasslight-big-nm.jpg", null, loadTextures );
+				diffuseTexture2 = THREE.ImageUtils.loadTexture( "textures/terrain/backgrounddetailed6.jpg", null, function(){loader.loadBarAdd();	loadTextures();	});
+				detailTexture = THREE.ImageUtils.loadTexture( "textures/terrain/grasslight-big-nm.jpg", null,function(){ loader.loadBarAdd();	loadTextures(); } );
 				//detailTexture = THREE.ImageUtils.loadTexture( "textures/moon_1024.jpg", null, loadTextures );
 
 				diffuseTexture1.wrapS = diffuseTexture1.wrapT = THREE.RepeatWrapping;

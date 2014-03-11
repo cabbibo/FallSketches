@@ -88,7 +88,7 @@ function render() {
 					}
 
                     renderer.autoClearColor = true;
-                    /*composer.reset();
+                    composer.reset();
 
                     //model.material = depthMaterial;
                     composer.render( scene, camera );
@@ -107,9 +107,9 @@ function render() {
                     //composer.pass( guidedFullBoxBlurPass );
                     //composer.pass( dirtPass );
 
-                    composer.toScreen();*/
+                    composer.toScreen();
 
-					renderer.render( scene, camera );
+					//renderer.render( scene, camera );
 					//composer.render( 0.1 );
 
 				}

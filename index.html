@@ -3,52 +3,11 @@
 	<head>
 		<title>Fall Sketches</title>
 		<meta charset="utf-8">
-		<style type="text/css">
-			body {
-				//background: #000;
-				color: #999;
-				padding: 0;
-				margin: 0;
-				overflow: hidden;
-				font-family: georgia;
-				font-size:1em;
-                text-align: center;
-                background:url('lib/burried.png');
-			}
-
-			#info { margin-top: 2em	}
-
-			a { color: #fb0; }
-
-			#footer { width: 100%; margin: 2em auto; text-align: center; position: absolute; bottom: 0 }
-			.h { color: #fb0 }
-			.c { display: inline; margin-left: 1em }
-
-			#loading { width: 100%; margin: 2em auto; text-align: center; position: absolute; top: 25em  }
-
-			#oldie a { color:#da0 }
-
-			#stats { position: absolute; top:0; left: 0 }
-			#stats #fps { background: transparent !important }
-			#stats #fps #fpsText { color: #aaa !important }
-            #stats #fps #fpsGraph { display: none }
-
-            #RENDERER{
-
-              border-top: 1px  solid  #999999;
-              border-bottom: 1px  solid  #999999;
-              box-shadow: 0px 1px 50px #999999;
-
-            }
-
-            @font-face {
-              font-family: "GeoSans";
-              src: url("/lib/GeosansLight.ttf");
-            }
 
 
-		</style>
-	</head>
+        <link rel="stylesheet" type="text/css" href="main.css">
+      
+    </head>
 
 	<body>
 		<div id="container"></div>
@@ -59,6 +18,7 @@
 			<source src="sounds/Five_Armies.ogg" type='audio/ogg'>
 		</audio>
 -->
+		<script src="lib/jquery-1.7.1.min.js"></script>
 		<script src="three.min.js"></script>
 
 		<script src="js/controls/TrackballControls.js"></script>
@@ -87,7 +47,9 @@
         <script src="TextCreator.js"></script>
         <script src="GrowBar.js"></script>
         <script src="AudioController.js"></script>
-        <script src="Audio.js"></script>
+        <script src="Stream.js"></script>
+        <script src="Loader.js"></script>
+        <script src="Note.js"></script>
         <script src="AudioTexture.js"></script>
 
         <script src="MouseMoveControls.js"></script>

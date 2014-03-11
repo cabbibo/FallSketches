@@ -1,8 +1,9 @@
 function initArch(){
   
-  var loader = new THREE.OBJLoader();
-  loader.load( "arch.obj" , function( geometry ){
+  var OBJloader = new THREE.OBJLoader();
+  OBJloader.load( "arch.obj" , function( geometry ){
 
+    loader.loadBarAdd();	
     var geo = geometry.children[0].geometry;
 
     assignUVs( geo );
@@ -12,6 +13,7 @@ function initArch(){
     geo.normalsNeedUpdate = true;
     
     var material = new THREE.MeshPhongMaterial({
+      
       color:0xaa0022,
       specular:0xee0033,
       ambient: 0x000000,

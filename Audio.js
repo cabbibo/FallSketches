@@ -5,6 +5,9 @@ function Audio( file , controller, looping ){
   this.file = file;
   this.controller = controller;
 
+  console.log( file );
+  console.log( this.controller );
+
   this.filter   = this.controller.ctx.createBiquadFilter();
   this.analyzer = this.controller.ctx.createAnalyser();
   this.analyzer.array = new Uint8Array( 1024 );
