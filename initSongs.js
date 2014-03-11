@@ -99,7 +99,7 @@
       function(){ loader.loadBarAdd();	}
   );
   noiseNormals = THREE.ImageUtils.loadTexture( 
-      "textures/waterNormals.jpg", 
+      "textures/waternormals.jpg", 
       THREE.UVMapping , 
       function(){ loader.loadBarAdd();	 }
   );
