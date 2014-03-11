@@ -213,8 +213,6 @@ function initMusicObject(){
 function MusicObjectUpdate(){
 
   //TIME += clock.getDelta();
-  console.log( TIME );
-
   this.material.uniforms.Time.value = TIME;
 
   this.rotation.y += .001;

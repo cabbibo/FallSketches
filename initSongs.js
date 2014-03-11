@@ -3,10 +3,10 @@
           var songs = [
         
             [   
-              "Dark Matter" ,             // Title
+              "Bleep Bloop" ,             // Title
               "audio/darkMatter.mp3"  ,   // song
               '/audio/notes/1.mp3'  ,     // note
-              [ 5 , -3.5 , 4.5  ],        // position
+                [ 5.5 , -1.5 , 2.2  ],        // position
               [ .8 , 1.2 , .2   ],        // color
               2.5,                         // NoiseSize
               .1,                         // NoisePower
@@ -15,10 +15,10 @@
 
             ],
             [ 
-              "Moon"                , 
+              "OPN"                , 
               "/audio/moon.mp3"     , 
               '/audio/notes/2.mp3'  ,   
-              [ 4 , -2 , 4.5  ],
+              [ 4.5 , 0 , 2.2  ],
               [ .3 , 1.2 , .7   ],        // color
               .6,                         // NoiseSize
               .2,                         // NoisePower
@@ -27,10 +27,10 @@
             ],
 
             [ 
-              "Crystalline" , 
+              "Don't Really Care" , 
               "audio/crystalline.mp3" ,
               '/audio/notes/3.mp3'  , 
-              [ 3.5 , -.5 , 4.5  ],
+              [ 4 , 1.5 , 1.5  ],
               [ .3 , .4 , 1.2   ],        // color
               .1,                         // NoiseSize
               .1,                         // NoisePower
@@ -39,10 +39,10 @@
             ],
 
             [ 
-              "Cosmonogy"   , 
+              "Calvin Preys"   , 
               "audio/cosmonogy.mp3"   ,   
               '/audio/notes/4.mp3'  , 
-              [ 3 , 1.3 , 4.3   ],
+              [ 2.5 , 2.3 , 1.5   ],
               [ .6 , .4 , .7   ],        // color
               .2,                         // NoiseSize
               .5,                         // NoisePower
@@ -51,16 +51,42 @@
             ],
 
             [ 
-              "Thunderbolt" ,
+              "Little Bit Frightened" ,
               "audio/thunderbolt.mp3" ,  
               '/audio/notes/5.mp3'  , 
-              [ 1 , 2 , 4.5   ],
+              [ .5 , 3., 1.5   ],
               [ 1.3 , .2 , .5   ],        // color
               .6,                         // NoiseSize
               .3,                         // NoisePower
               .3,                         // NoiseSpeed
               .6,                         // AudioPower
             ],
+
+            [ 
+              "Holly" ,
+              "audio/thunderbolt.mp3" ,  
+              '/audio/notes/5.mp3'  , 
+              [ -1.5  , 3.5 , 1.5   ],
+              [ 1.3 , .2 , .5   ],        // color
+              .6,                         // NoiseSize
+              .3,                         // NoisePower
+              .3,                         // NoiseSpeed
+              .6,                         // AudioPower
+            ],
+
+            [ 
+              "Tongue Wrong Song" ,
+              "audio/thunderbolt.mp3" ,  
+              '/audio/notes/5.mp3'  , 
+              [ - 3.0 , 2.5 , 1.5   ],
+              [ 1.3 , .2 , .5   ],        // color
+              .6,                         // NoiseSize
+              .3,                         // NoisePower
+              .3,                         // NoiseSpeed
+              .6,                         // AudioPower
+            ],
+
+
 
           ];
 
