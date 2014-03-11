@@ -6,7 +6,7 @@
               "Bleep Bloop" ,             // Title
               "audio/darkMatter.mp3"  ,   // song
               '/audio/notes/1.mp3'  ,     // note
-                [ 5.5 , -1.5 , 2.2  ],        // position
+              [ 4.5 , -2.0 , 2.2  ],        // position
               [ .8 , 1.2 , .2   ],        // color
               2.5,                         // NoiseSize
               .1,                         // NoisePower
@@ -30,7 +30,7 @@
               "Don't Really Care" , 
               "audio/crystalline.mp3" ,
               '/audio/notes/3.mp3'  , 
-              [ 4 , 1.5 , 1.5  ],
+              [ 3.6 , 1.6 , 1.5  ],
               [ .3 , .4 , 1.2   ],        // color
               .1,                         // NoiseSize
               .1,                         // NoisePower
@@ -42,7 +42,7 @@
               "Calvin Preys"   , 
               "audio/cosmonogy.mp3"   ,   
               '/audio/notes/4.mp3'  , 
-              [ 2.5 , 2.3 , 1.5   ],
+              [ 2.5 , 3 , 1.5   ],
               [ .6 , .4 , .7   ],        // color
               .2,                         // NoiseSize
               .5,                         // NoisePower
@@ -54,7 +54,7 @@
               "Little Bit Frightened" ,
               "audio/thunderbolt.mp3" ,  
               '/audio/notes/5.mp3'  , 
-              [ .5 , 3., 1.5   ],
+              [ 1.5 , 4., 3.   ],
               [ 1.3 , .2 , .5   ],        // color
               .6,                         // NoiseSize
               .3,                         // NoisePower
@@ -66,7 +66,7 @@
               "Holly" ,
               "audio/thunderbolt.mp3" ,  
               '/audio/notes/5.mp3'  , 
-              [ -1.5  , 3.5 , 1.5   ],
+              [ -1.0  , 5.0 , 2.   ],
               [ 1.3 , .2 , .5   ],        // color
               .6,                         // NoiseSize
               .3,                         // NoisePower
@@ -78,7 +78,7 @@
               "Tongue Wrong Song" ,
               "audio/thunderbolt.mp3" ,  
               '/audio/notes/5.mp3'  , 
-              [ - 3.0 , 2.5 , 1.5   ],
+              [ - 3.0 , 4.5 , 1.5   ],
               [ 1.3 , .2 , .5   ],        // color
               .6,                         // NoiseSize
               .3,                         // NoisePower
@@ -201,7 +201,7 @@ transparent: true,
               var offset = w * scale / 2;                                 
               song.titleMesh.position.x = -500 - offset ;
               song.titleMesh.position.z = 600;
-              song.titleMesh.position.y = ( i - 2.5 ) * 100 - 100;
+              song.titleMesh.position.y = ( i - 2.5 ) * 100; //- 100;
 
               song.hoverOver = hoverOver.bind( song );
               song.hoverOut = hoverOut.bind( song );
@@ -221,31 +221,39 @@ transparent: true,
               position2.x += 10 +( ( l- i)  * 10);
 
               position3 = position2.clone();
-              position3.y = 200;
+              position3.y = 400;
 
               position4 = position3.clone();
               position4.x += 100 - ( ( l- i)  * 10);
               position4.y += 100 - ( ( l- i)  * 10 );
 
               position5 = position4.clone();
-              position5.x += 400 + ( i* 10 );
+              position5.x += 550 + ( i* 10 );
 
               position6 = position5.clone();
-              position6.y = 300 + ( i * 10 );
+              position6.y = 500 + ( i * 10 );
               position6.x += 50;
 
               position7 = position6.clone();
               position7.x = 500;
 
+              
               position8 = position7.clone();
-              position8.y = 250;
+              position8.y = 450;
               position8.x += 50 + ( i * 10 );
 
 
+              
+
               endPosition = song.position.clone();
 
-              position9 = position8.clone();
-              position9.y = endPosition.y;
+              position10 = endPosition.clone();
+              position10.y += 200;
+              position10.z = 100;
+              position10.x += 200;
+
+              position9 = position10.clone();
+              position9.x = 700;
 
               /*position6 = position5.clone();
               position6.x += 50 + ( (i) * s2 * 10 );
@@ -260,6 +268,7 @@ transparent: true,
 
                 //song.position.clone(),
                 endPosition , 
+                position10 ,
                 position9 ,
                 position8 ,
                 position7 ,

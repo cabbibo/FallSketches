@@ -23,7 +23,8 @@ function initScene(){
 
 
   controls = new THREE.MouseMoveControls( camera );
-  controls.z = 2000;
+  controls.z = 3000;
+  controls.y = 300;
 
 
   // SCENE (FINAL)

@@ -88,7 +88,7 @@ function render() {
 					}
 
                     renderer.autoClearColor = true;
-                    composer.reset();
+                    /*composer.reset();
 
                     //model.material = depthMaterial;
                     composer.render( scene, camera );
@@ -97,12 +97,7 @@ function render() {
                     //model.material = modelMaterial;
                     composer.render( scene, camera );
 
-                    /*if( SSAOPass.isLoaded() ) {
-                        SSAOPass.shader.uniforms.tDepth.value = depthTexture;
-                        //composer.pass( SSAOPass );
-                    }*/
-
-                    if( guidedFullBoxBlurPass.isLoaded() ) {
+                                      if( guidedFullBoxBlurPass.isLoaded() ) {
                         guidedFullBoxBlurPass.guidedBoxPass.shader.uniforms.isPacked.value = true;
                         guidedFullBoxBlurPass.guidedBoxPass.shader.uniforms.tBias.value = depthTexture;
                     }
@@ -112,9 +107,9 @@ function render() {
                     //composer.pass( guidedFullBoxBlurPass );
                     //composer.pass( dirtPass );
 
-                    composer.toScreen();
+                    composer.toScreen();*/
 
-					//renderer.render( scene, camera );
+					renderer.render( scene, camera );
 					//composer.render( 0.1 );
 
 				}
