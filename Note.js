@@ -59,7 +59,7 @@ Note.prototype.loadFile = function(){
 
 Note.prototype.onDecode = function(){
 
-  loader.loadBarAdd();
+  loader.loadBarAdd( this.file );
   //gets just the track name, removing the mp3
   this.trackID= this.file.split('.')[this.file.split('.').length-2];
 
@@ -70,6 +70,11 @@ Note.prototype.onDecode = function(){
 }
 
 Note.prototype.play = function(){
+
+  if( !this.source ){
+
+    this.loadFile();
+  }
 
   this.playing = true;
   this.source.noteOn(0);

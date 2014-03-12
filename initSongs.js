@@ -64,7 +64,7 @@
             [ 
               "Holly" ,
               "audio/holly.mp3" ,  
-              'audio/notes/6.mp3'  , 
+              'audio/notes/3.mp3'  , 
               [ -1.0  , 5.0 , 2.   ],
               [ .3 , .2 , .5   ],        // color
               1.2,                         // NoiseSize
@@ -76,7 +76,7 @@
             [ 
               "Tongue Wrong Song" ,
               "audio/tongueWrongSong.mp3" ,  
-              'audio/notes/7.mp3'  , 
+              'audio/notes/1.mp3'  , 
               [ - 3.0 , 4.5 , 1.5   ],
               [ 1.0 , 1.0 , .5   ],        // color
               .1,                         // NoiseSize

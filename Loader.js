@@ -1,7 +1,7 @@
 function Loader(){
 
   this.params =  {
-    numberToLoad:   13,
+    numberToLoad:   14,
     loadGif:        "lib/loadGif.gif",
     videoWidth: 500,
     videoHeight: 281,
@@ -94,8 +94,9 @@ Loader.prototype = {
   },
 
 
-  loadBarAdd: function(){
+  loadBarAdd: function( fileName ){
 
+    console.log( fileName );
     var oldWidth = parseInt( this.loadBar.style.width );
     var newWidth = oldWidth + this.loadBarAddAmount;
 
