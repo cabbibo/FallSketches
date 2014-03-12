@@ -15,7 +15,7 @@
             ],
             [ 
               "OPN"                , 
-              "audio/opn.mp3"     , 
+              "audio/OPN.mp3"     , 
               'audio/notes/2.mp3'  ,   
               [ 4.5 , 0 , 2.2  ],
               [ .3 , 1.2 , .7   ],        // color
