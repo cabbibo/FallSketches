@@ -1,7 +1,7 @@
 function Loader(){
 
   this.params =  {
-    numberToLoad:   10,
+    numberToLoad:   13,
     loadGif:        "lib/loadGif.gif",
     videoWidth: 500,
     videoHeight: 281,
