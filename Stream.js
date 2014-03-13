@@ -14,13 +14,13 @@ function Stream( file , controller, looping ){
 
   this.looping = looping;
 
-  this.audio = new Audio();
+  /*this.audio = new Audio();
 
   this.audio.preload = 'none';
 
-  this.audio.src = this.file;
+  this.audio.src = this.file;*/
 
-  this.createSource();
+  //this.createSource();
 
   this.controller.notes.push( this );
  
@@ -37,12 +37,13 @@ Stream.prototype.createSource = function(){
   audio.src = this.file;
   audio.loop = true;
   this.audio = audio;
-  this.audio.load();
+ // this.audio.load();
 
  // this.audio.currentTime = 0;
   this.source = ctx.createMediaElementSource( this.audio );
   this.source.connect( this.gain );
 
+  console.log( this.audio );
   //this.audio.currentTime = 0;
   //this.source.currentTime = 0;
 
@@ -74,23 +75,20 @@ Stream.prototype.play = function(){
 
   var self = this;
 
-  console.log( 'HELLO' );
+  if(!this.source){
+    console.log( 'NO SORUCE' );
+    this.createSource();
+  }
+
+
   setTimeout(function(){
 
-    if(!self.source){
-        
-        self.createSource();
-        self.audio.play();
-        self.fadeIn( .5 , 1);
-        
-    }else{
-    
 
-        self.audio.play();
-        self.fadeIn( .5 , 1 );
 
-    }
+    self.audio.play();
+    self.fadeIn( .5 , 1 );
     self.playing = true;
+
   },10);
 
 
@@ -109,9 +107,10 @@ Stream.prototype.stop = function(){
     //this.audio.currentTime = 0;
     //this.source.currentTime = 0;
    // this.gain.disconnect( this.source );
-    
-    this.source = undefined;
+   
+    //this.gain.disconnect( this.source );
     this.audio = undefined;
+    this.source = undefined;
     console.log( 'SONG ENDED' );
     console.log( this );
 
