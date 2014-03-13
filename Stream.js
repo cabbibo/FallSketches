@@ -77,7 +77,13 @@ Stream.prototype.createAudio = function(){
   audio.preload = "none"
   audio.src     = this.file;
   audio.loop    = true;
+  audio.style.top = '0px';
+  audio.style.left = '0px';
+  audio.style.zIndex = '998';
+  audio.style.position = 'fixed';
 
+
+  document.body.appendChild( audio );
   console.log(' AUDS');
   console.log( audio );
   this.audio    = audio;
