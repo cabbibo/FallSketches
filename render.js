@@ -15,6 +15,7 @@ function render() {
       MusicObject.update();
                 var delta = clock.getDelta();
 
+                controls.update();
                 TIME += delta;
 				soundVal = THREE.Math.clamp( soundVal + delta * soundDir, 0, 1 );
 
@@ -86,8 +87,7 @@ function render() {
 
 
 					}
-
-                    renderer.autoClearColor = true;
+                                    renderer.autoClearColor = true;
                     composer.reset();
 
                     //model.material = depthMaterial;
@@ -97,7 +97,7 @@ function render() {
                     //model.material = modelMaterial;
                     composer.render( scene, camera );
 
-                                      if( guidedFullBoxBlurPass.isLoaded() ) {
+                    if( guidedFullBoxBlurPass.isLoaded() ) {
                         guidedFullBoxBlurPass.guidedBoxPass.shader.uniforms.isPacked.value = true;
                         guidedFullBoxBlurPass.guidedBoxPass.shader.uniforms.tBias.value = depthTexture;
                     }

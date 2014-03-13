@@ -156,7 +156,6 @@ var fragmentShader = [
 
 function initMusicObject(){
 
-  console.log( 'CENTER OBJECT' );
 
   var color = new THREE.Vector3( 1.9 , .9 , .3 );
 

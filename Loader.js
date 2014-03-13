@@ -96,7 +96,7 @@ Loader.prototype = {
 
   loadBarAdd: function( fileName ){
 
-    console.log( fileName );
+   // console.log( fileName );
     var oldWidth = parseInt( this.loadBar.style.width );
     var newWidth = oldWidth + this.loadBarAddAmount;
 
@@ -106,10 +106,9 @@ Loader.prototype = {
 
     this.checkConditions();
 
-    console.log( this.numberLoaded );
+    //console.log( this.numberLoaded );
 
     if( this.numberLoaded == this.numberToLoad ){
-      console.log( this.numberToLoad );
       this.onFinishedLoading();
     }
 
@@ -236,7 +235,6 @@ Loader.prototype = {
   onStart: function(){
 
     
-    console.log('HELLASS');
     if( !window.STARTED ){
       window.STARTED = true
       animate();

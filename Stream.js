@@ -1,4 +1,5 @@
 
+STREAMS = [];
 
 function Stream( file , controller, looping ){
 
@@ -20,9 +21,15 @@ function Stream( file , controller, looping ){
 
   this.audio.src = this.file;*/
 
-  //this.createSource();
+  var audio = new Audio();
+  audio.preload = "none";
+  audio.src = this.file;
+  audio.loop = true;
+  this.audio = audio;
 
   this.controller.notes.push( this );
+
+  STREAMS.push( this );
  
 }
 
@@ -32,20 +39,13 @@ Stream.prototype.createSource = function(){
 
   var ctx = this.controller.ctx;
 
-  var audio = new Audio();
-  audio.preload = "none";
-  audio.src = this.file;
-  audio.loop = true;
-  this.audio = audio;
+  
  // this.audio.load();
 
  // this.audio.currentTime = 0;
   this.source = ctx.createMediaElementSource( this.audio );
   this.source.connect( this.gain );
 
-  console.log( this.audio );
-  //this.audio.currentTime = 0;
-  //this.source.currentTime = 0;
 
 }
 
@@ -62,11 +62,6 @@ Stream.prototype.fadeOut = function( time , callback ){
 
 Stream.prototype.fadeIn = function( time , value ){
 
-  //if( !time  ) time  = 1;
-  //if( !value ) value = 1;
-
-  console.log( 'FADDED' );
-  console.log( this.gain.gain );
   this.gain.gain.linearRampToValueAtTime( 1 , this.controller.ctx.currentTime + time );
 
 }
@@ -76,7 +71,6 @@ Stream.prototype.play = function(){
   var self = this;
 
   if(!this.source){
-    console.log( 'NO SORUCE' );
     this.createSource();
   }
 
@@ -96,25 +90,20 @@ Stream.prototype.play = function(){
 
 Stream.prototype.stop = function(){
 
-  this.fadeOut( 1 , function(){ 
+  this.fadeOut( .4 , function(){ 
 
-    console.log( 'HELLO' );
-   // this.audio.stop();
-   //
     this.audio.pause();
     this.playing = false;
-  
+ 
+    this.audio.currentTime = 0;
     //this.audio.currentTime = 0;
     //this.source.currentTime = 0;
    // this.gain.disconnect( this.source );
    
     //this.gain.disconnect( this.source );
-    this.audio = undefined;
-    this.source = undefined;
-    console.log( 'SONG ENDED' );
-    console.log( this );
+    //this.source = undefined;
 
-  });
+ });
 
 }
 

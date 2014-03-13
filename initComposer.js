@@ -19,7 +19,6 @@ function initComposer(){	// COMPOSER
    // SSAOPass = new WAGNER.SSAOPass();
 
     multiPassBloomPass.params.blurAmount = 20;
-    console.log( multiPassBloomPass );
     var w = window.innerWidth;
     var h = window.innerHeight - 2 * MARGIN;
 

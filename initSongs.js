@@ -378,7 +378,6 @@ function activate(){
 
   if( !this.track.playing ){
 
-    console.log( this.track );
     this.track.play();
 
   }
@@ -402,7 +401,6 @@ function activate(){
           .3,                         // AudioPower
           */
 
-  console.log('SS');
 
 
 }
