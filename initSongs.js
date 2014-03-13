@@ -412,8 +412,13 @@ function deactivate(){
   this.titleMesh.material.opacity = .2;
   this.growBar.material.opacity = .2;
 
-  if( this.track.playing )
+  if( this.track.playing ){
+
+    console.log('DEACTIVATE');
+    console.log(this.track.file);
     this.track.stop();
+
+  }
 
   var anyActive = false;
 

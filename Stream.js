@@ -5,27 +5,10 @@ function Stream( file , controller, looping ){
 
   this.file = file;
   this.controller = controller;
+  this.ctx = this.controller.ctx;
 
-  this.analyzer = this.controller.ctx.createAnalyser();
-  this.analyzer.array = new Uint8Array( 1024 );
-  this.gain     = this.controller.ctx.createGain();
-
-  this.gain.connect( this.analyzer );
-  this.analyzer.connect( this.controller.gain );
 
   this.looping = looping;
-
-  /*this.audio = new Audio();
-
-  this.audio.preload = 'none';
-
-  this.audio.src = this.file;*/
-
-  var audio = new Audio();
-  audio.preload = "none";
-  audio.src = this.file;
-  audio.loop = true;
-  this.audio = audio;
 
   this.controller.notes.push( this );
 
@@ -34,22 +17,98 @@ function Stream( file , controller, looping ){
 }
 
 
+Stream.prototype.play = function(){
 
-Stream.prototype.createSource = function(){
+  this.createAudio();
 
-  var ctx = this.controller.ctx;
+  console.log( 'HELLO' );
+  console.log( this.audio );
+  var self = this;
+
+  setTimeout( function(){
+
+    if( !self.source ){
+
+      console.log('NO SOURECE');
+      self.createSource();
+      self.audio.play();
+      self.playing = true;
+
+    }else{
+
+      console.log( 'SORUCES');
+      self.audio.play();
+      self.playing = true;
+
+    }
 
   
- // this.audio.load();
-
- // this.audio.currentTime = 0;
-  this.source = ctx.createMediaElementSource( this.audio );
-  this.source.connect( this.gain );
+  }, 100 );
 
 
 }
 
-Stream.prototype.fadeOut = function( time , callback ){
+Stream.prototype.stop = function(){
+
+  this.playing = false;
+  console.log( this.audio );
+  this.audio.pause();
+  this.destroySource();
+
+}
+
+Stream.prototype.destroySource = function(){
+
+  if( this.gain ){
+
+    this.gain.disconnect(  this.controller.gain );
+
+  }
+
+  this.source = undefined;
+  this.audio = undefined;
+  this.gain = undefined;
+
+}
+
+Stream.prototype.createAudio = function(){
+
+  var audio     = new Audio();
+  audio.preload = "none"
+  audio.src     = this.file;
+  audio.loop    = true;
+
+  console.log(' AUDS');
+  console.log( audio );
+  this.audio    = audio;
+
+}
+Stream.prototype.createSource = function(){
+
+  if( this.audio ){
+
+    console.log( 'THIS IS HAPPENENIGN');
+    this.source = this.ctx.createMediaElementSource( this.audio );
+
+    this.source.connect( this.controller.gain );
+   /* this.gain     = this.ctx.createGain();
+    this.gain.connect( this.controller.gain );*/
+
+
+  }else{
+
+    console.log('What the ACTUAL FUCK!');
+
+  }
+
+
+
+}
+
+
+
+
+/*Stream.prototype.fadeOut = function( time , callback ){
  
   var t = this.controller.ctx.currentTime;
   if( !time ) time = this.params.fadeTime;
@@ -64,9 +123,9 @@ Stream.prototype.fadeIn = function( time , value ){
 
   this.gain.gain.linearRampToValueAtTime( 1 , this.controller.ctx.currentTime + time );
 
-}
+}*/
 
-Stream.prototype.play = function(){
+/*Stream.prototype.play = function(){
 
   var self = this;
 
@@ -96,6 +155,7 @@ Stream.prototype.stop = function(){
     this.playing = false;
  
     this.audio.currentTime = 0;
+    this.audio = undefined;
     //this.audio.currentTime = 0;
     //this.source.currentTime = 0;
    // this.gain.disconnect( this.source );
@@ -105,11 +165,11 @@ Stream.prototype.stop = function(){
 
  });
 
-}
+}*/
 
 
 Stream.prototype.update = function(){
 
-  this.analyzer.getByteFrequencyData( this.analyzer.array );
+  //this.analyzer.getByteFrequencyData( this.analyzer.array );
 
 }
