@@ -1,12 +1,34 @@
 
 STREAMS = [];
 
+var ULTIMATE_STREAM, ULTIMATE_SOURCE , ULTIMATE_GAIN , ULTIMATE_CONTROLLER ;
+
 function Stream( file , controller, looping ){
 
   this.file = file;
   this.controller = controller;
   this.ctx = this.controller.ctx;
 
+  if( !ULTIMATE_STREAM ){
+
+    ULTIMATE_STREAM = new Audio();
+
+
+   
+    var ctx = controller.ctx;
+
+    ULTIMATE_SOURCE = ctx.createMediaElementSource( ULTIMATE_STREAM );
+    ULTIMATE_GAIN = ctx.createGain();
+    
+    ULTIMATE_SOURCE.connect( ULTIMATE_GAIN );
+
+    
+    ULTIMATE_GAIN.connect( controller.gain );
+    //ULTIMATE_SOURCE.connect( controller.gain );
+
+    ULTIMATE_CONTROLLER = controller;
+
+  }
 
   this.looping = looping;
 
@@ -19,18 +41,24 @@ function Stream( file , controller, looping ){
 
 Stream.prototype.play = function(){
 
-  this.createAudio();
+  this.playing = true;
 
-  console.log( 'HELLO' );
-  console.log( this.audio );
-  var self = this;
+  ULTIMATE_STREAM.src = this.file;
+  ULTIMATE_STREAM.play();
+  //ULTIMATE_GAIN.gain.value = 0.5;
 
-  setTimeout( function(){
+  var t = ULTIMATE_CONTROLLER.ctx.currentTime;
+  ULTIMATE_GAIN.gain.linearRampToValueAtTime( 1 , ULTIMATE_CONTROLLER.ctx.currentTime + 1 );
+
+  //this.playing = true;
+
+
+  /*setTimeout( function(){
 
     if( !self.source ){
 
       console.log('NO SOURECE');
-      self.createSource();
+     // self.createSource();
       self.audio.play();
       self.playing = true;
 
@@ -43,7 +71,7 @@ Stream.prototype.play = function(){
     }
 
   
-  }, 100 );
+  }, 100 );*/
 
 
 }
@@ -51,65 +79,23 @@ Stream.prototype.play = function(){
 Stream.prototype.stop = function(){
 
   this.playing = false;
-  console.log( this.audio );
-  this.audio.pause();
-  this.destroySource();
+
+  var t = ULTIMATE_CONTROLLER.ctx.currentTime;
+
+  console.log('TIME' );
+  console.log( t );
+  ULTIMATE_GAIN.gain.linearRampToValueAtTime( ULTIMATE_GAIN.gain.value , t );
+
+
+
+  ULTIMATE_GAIN.gain.linearRampToValueAtTime( 0.0 , t + 1);
+
+  setTimeout( function(){
+  ULTIMATE_STREAM.pause(); 
+  },999);
 
 }
 
-Stream.prototype.destroySource = function(){
-
-  if( this.gain ){
-
-    this.gain.disconnect(  this.controller.gain );
-
-  }
-
-  this.source = undefined;
-  this.audio = undefined;
-  this.gain = undefined;
-
-}
-
-Stream.prototype.createAudio = function(){
-
-  var audio     = new Audio();
-  audio.preload = "none"
-  audio.src     = this.file;
-  audio.loop    = true;
-  audio.style.top = '0px';
-  audio.style.left = '0px';
-  audio.style.zIndex = '998';
-  audio.style.position = 'fixed';
-
-
-  document.body.appendChild( audio );
-  console.log(' AUDS');
-  console.log( audio );
-  this.audio    = audio;
-
-}
-Stream.prototype.createSource = function(){
-
-  if( this.audio ){
-
-    console.log( 'THIS IS HAPPENENIGN');
-    this.source = this.ctx.createMediaElementSource( this.audio );
-
-    this.source.connect( this.controller.gain );
-   /* this.gain     = this.ctx.createGain();
-    this.gain.connect( this.controller.gain );*/
-
-
-  }else{
-
-    console.log('What the ACTUAL FUCK!');
-
-  }
-
-
-
-}
 
 
 
@@ -125,7 +111,7 @@ Stream.prototype.createSource = function(){
 
 }
 
-Stream.prototype.fadeIn = function( time , value ){
+ULTIMATE_GAIN.fadeIn = function( time , value ){
 
   this.gain.gain.linearRampToValueAtTime( 1 , this.controller.ctx.currentTime + time );
 

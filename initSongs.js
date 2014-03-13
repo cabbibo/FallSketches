@@ -367,7 +367,21 @@ function activate(){
   }
 
   controls.z = 2500;
- 
+
+     var anyOthersPlaying = false;
+
+  for( var i = 0; i < songObjects.length; i++ ){
+
+  console.log(songObjects[i]);
+    if( songObjects[i].track.playing == true ){
+     
+      console.log('PLAYING' );
+      anyOthersPlaying = true;    
+    }else{
+     console.log('NOT PALYING' ); 
+    }
+  }
+
   for( var i = 0; i < songObjects.length; i++ ){
 
     if( songObjects[i] != this ){
@@ -378,7 +392,33 @@ function activate(){
 
   if( !this.track.playing ){
 
-    this.track.play();
+    if( anyOthersPlaying ){
+     
+      var self = this;
+      console.log( 'OTHERS PLAYING' );
+      setTimeout( function(){
+        self.track.play();
+        pointLight.color = new THREE.Color( v.x , v.y , v.z );
+        MusicObject.material.uniforms.Color.value.fromArray(self.params[4] );
+        MusicObject.material.uniforms.NoiseSize.value  = self.params[5];
+        MusicObject.material.uniforms.NoisePower.value = self.params[6];
+        MusicObject.material.uniforms.NoiseSpeed.value = self.params[7];
+        MusicObject.material.uniforms.AudioPower.value = self.params[8];
+      } , 1000 );
+
+    }else{
+
+      console.log('NOOTHERS PLAYING' );
+      this.track.play();
+      pointLight.color = new THREE.Color( v.x , v.y , v.z );
+      MusicObject.material.uniforms.Color.value.fromArray(this.params[4] );
+      MusicObject.material.uniforms.NoiseSize.value  = this.params[5];
+      MusicObject.material.uniforms.NoisePower.value = this.params[6];
+      MusicObject.material.uniforms.NoiseSpeed.value = this.params[7];
+      MusicObject.material.uniforms.AudioPower.value = this.params[8];
+
+
+    }
 
   }
 
@@ -388,12 +428,12 @@ function activate(){
       this.params[4][2] 
   );
 
-  pointLight.color = new THREE.Color( v.x , v.y , v.z );
+  /*pointLight.color = new THREE.Color( v.x , v.y , v.z );
   MusicObject.material.uniforms.Color.value.fromArray(this.params[4] );
   MusicObject.material.uniforms.NoiseSize.value  = this.params[5];
   MusicObject.material.uniforms.NoisePower.value = this.params[6];
   MusicObject.material.uniforms.NoiseSpeed.value = this.params[7];
-  MusicObject.material.uniforms.AudioPower.value = this.params[8];
+  MusicObject.material.uniforms.AudioPower.value = this.params[8];*/
   /*[ 1.3 , .2 , .5   ],        // color
           .6,                         // NoiseSize
           .5,                         // NoisePower
