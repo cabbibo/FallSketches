@@ -435,19 +435,6 @@ function activate(){
 
   }
 
-   /*pointLight.color = new THREE.Color( v.x , v.y , v.z );
-  MusicObject.material.uniforms.Color.value.fromArray(this.params[4] );
-  MusicObject.material.uniforms.NoiseSize.value  = this.params[5];
-  MusicObject.material.uniforms.NoisePower.value = this.params[6];
-  MusicObject.material.uniforms.NoiseSpeed.value = this.params[7];
-  MusicObject.material.uniforms.AudioPower.value = this.params[8];*/
-  /*[ 1.3 , .2 , .5   ],        // color
-          .6,                         // NoiseSize
-          .5,                         // NoisePower
-          .2,                         // NoiseSpeed
-          .3,                         // AudioPower
-          */
-
 
 
 }
