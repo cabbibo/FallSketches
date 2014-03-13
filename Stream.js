@@ -50,30 +50,6 @@ Stream.prototype.play = function(){
   var t = ULTIMATE_CONTROLLER.ctx.currentTime;
   ULTIMATE_GAIN.gain.linearRampToValueAtTime( 1 , ULTIMATE_CONTROLLER.ctx.currentTime + 1 );
 
-  //this.playing = true;
-
-
-  /*setTimeout( function(){
-
-    if( !self.source ){
-
-      console.log('NO SOURECE');
-     // self.createSource();
-      self.audio.play();
-      self.playing = true;
-
-    }else{
-
-      console.log( 'SORUCES');
-      self.audio.play();
-      self.playing = true;
-
-    }
-
-  
-  }, 100 );*/
-
-
 }
 
 Stream.prototype.stop = function(){

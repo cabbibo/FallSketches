@@ -398,6 +398,12 @@ function activate(){
       console.log( 'OTHERS PLAYING' );
       setTimeout( function(){
         self.track.play();
+
+       var v = new THREE.Vector3(
+          self.params[4][0] ,
+          self.params[4][1] ,
+          self.params[4][2] 
+        );
         pointLight.color = new THREE.Color( v.x , v.y , v.z );
         MusicObject.material.uniforms.Color.value.fromArray(self.params[4] );
         MusicObject.material.uniforms.NoiseSize.value  = self.params[5];
@@ -410,6 +416,13 @@ function activate(){
 
       console.log('NOOTHERS PLAYING' );
       this.track.play();
+
+      var v = new THREE.Vector3(
+      this.params[4][0] ,
+      this.params[4][1] ,
+      this.params[4][2] 
+  );
+
       pointLight.color = new THREE.Color( v.x , v.y , v.z );
       MusicObject.material.uniforms.Color.value.fromArray(this.params[4] );
       MusicObject.material.uniforms.NoiseSize.value  = this.params[5];
@@ -422,13 +435,7 @@ function activate(){
 
   }
 
-  var v = new THREE.Vector3(
-      this.params[4][0] ,
-      this.params[4][1] ,
-      this.params[4][2] 
-  );
-
-  /*pointLight.color = new THREE.Color( v.x , v.y , v.z );
+   /*pointLight.color = new THREE.Color( v.x , v.y , v.z );
   MusicObject.material.uniforms.Color.value.fromArray(this.params[4] );
   MusicObject.material.uniforms.NoiseSize.value  = this.params[5];
   MusicObject.material.uniforms.NoisePower.value = this.params[6];
