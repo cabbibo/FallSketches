@@ -22,7 +22,9 @@ function initComposer(){	// COMPOSER
     var w = window.innerWidth;
     var h = window.innerHeight - 2 * MARGIN;
 
-    composer.setSize( w * 2 , h * 2 );
+    var dpr = 1;
+    if( window.devicePixelRatio )  dpr = window.devicePixelRatio;
+    composer.setSize( w * dpr , h * dpr );
 
     depthTexture = WAGNER.Pass.prototype.getOfflineTexture( w, h );
     normalTexture = WAGNER.Pass.prototype.getOfflineTexture( w, h );
