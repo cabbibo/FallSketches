@@ -24,6 +24,8 @@ function initComposer(){	// COMPOSER
 
     var dpr = 1;
     if( window.devicePixelRatio )  dpr = window.devicePixelRatio;
+    console.log( 'DPR ' );
+    console.log( dpr );
     composer.setSize( w * dpr , h * dpr );
 
     depthTexture = WAGNER.Pass.prototype.getOfflineTexture( w, h );
