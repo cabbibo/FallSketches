@@ -220,10 +220,10 @@ transparent: true,
               song.activate = activate.bind( song );
               song.deactivate = deactivate.bind( song );
 
-              /*song.titleMesh.hoverOver = hoverOver.bind( song );
+              song.titleMesh.hoverOver = hoverOver.bind( song );
               song.titleMesh.hoverOut = hoverOut.bind( song );
               song.titleMesh.activate = activate.bind( song );
-              song.titleMesh.deactivate = deactivate.bind( song );*/
+              song.titleMesh.deactivate = deactivate.bind( song );
 
 
 

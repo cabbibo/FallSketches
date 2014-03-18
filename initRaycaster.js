@@ -33,7 +33,14 @@ function onDocumentMouseMove( event ) {
 
   var raycaster = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
 
-  var objects = songObjects;
+  var objects = [];
+  for( var i = 0; i < songObjects.length; i++ ){
+
+    objects.push( songObjects[i] );
+    objects.push( songObjects[i].titleMesh );
+
+  }
+
 
   var intersects = raycaster.intersectObjects( objects , true );
 

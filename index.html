@@ -13,10 +13,32 @@
 	<body>
       <div id="container"></div>
       <h1 id="title" >
-        <a href="http://soundcloud.com/cabbibo/sets/fall-sketches">
-          Fall Sketches 
+        <a href="http://soundcloud.com/cabbibo/sets/fall-sketches" target="_blank" >
+          Cabbibo - Fall Sketches EP 
         </a>
       </h1>
+
+      <div id = "info">
+        <div id="technology">
+
+          <h2> Made With: </h2>
+          <a class="tech" target="_blank" href="http://threejs.org/"> Three.js </a>
+          <a class="tech" target="_blank" href="https://github.com/spite/Wagner"> Wagner - Postprocessing </a>
+          <a class="tech" target="_blank" href="http://www.html5rocks.com/en/tutorials/webaudio/intro/"> Web Audio API </a>
+          <a class="tech" target="_blank" href="http://threejs.org/examples/#webgl_terrain_dynamic"> Dynamic Terrain Example </a>
+          <a class="tech" target="_blank" href="https://airspace.leapmotion.com/apps/freeform/osx"> Freeform Sculpting App </a>
+          <a class="tech" target="_blank" href="https://github.com/ashima/webgl-noise/wiki"> Ashima's WebGL Simplex Noise </a>
+          <a class="tech" target="_blank" href="http://soundcloud.com/cabbibo/sets/fall-sketches" > See Songs for Sample info</a>
+
+        </div>
+
+        <a onclick="toggleTech()" id = "infoButton" class="social" ><img width="40" height = "40" src="lib/info_1.png" />
+</a>
+
+      </div>
+
+
+
       <div id="social">
 
         <a href="http://www.facebook.com/sharer.php?u=http://cabbibo.github.io/Arch-Audio/" target="_blank" class="social" id="facebook">
@@ -95,6 +117,18 @@
 
 		<script>
 
+          function toggleTech(){
+
+            console.log('HELLO' );
+            var tech = document.getElementById("technology");
+            console.log( tech.style.display );
+
+            if( tech.style.display === 'block' )
+              tech.style.display = 'none';
+            else
+              tech.style.display = 'block' ;
+
+          }
 		
 
 
