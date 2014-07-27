@@ -76,6 +76,7 @@ function render() {
                     // scene.remove(terrain ); //terrain.visable = false;
                     }
 
+                    frame ++;
 
                   }
 		
@@ -83,8 +84,6 @@ function render() {
 					renderer.render( scene, camera );
 					//composer.render( 0.1 );
 
-
-                frame ++;
 
 			}
 
