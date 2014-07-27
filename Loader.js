@@ -267,6 +267,13 @@ Loader.prototype = {
 
     }
 
+    if( this.failures >  0 ){
+
+        throw new Error('This is not an error. This is just to abort javascript');
+      
+
+    }
+
 
   },
   
