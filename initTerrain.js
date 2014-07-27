@@ -19,6 +19,7 @@ function initTerrain(){
 
 				};
 
+                console.log( THREE.NormalMapShader);
 				uniformsNormal = THREE.UniformsUtils.clone( normalShader.uniforms );
 
 				uniformsNormal.height.value = 0.05;
@@ -29,7 +30,7 @@ function initTerrain(){
 
 				// TEXTURES
 
-				var specularMap = new THREE.WebGLRenderTarget( 2048, 2048, pars );
+				var specularMap = new THREE.WebGLRenderTarget( 256 , 256, pars );
 
 				diffuseTexture1 = THREE.ImageUtils.loadTexture( "textures/terrain/grasslight-big.jpg", null, function () {
 
@@ -107,7 +108,7 @@ function initTerrain(){
 
 				// TERRAIN MESH
 
-				var geometryTerrain = new THREE.PlaneGeometry( 6000, 6000, 100 , 100 );
+				var geometryTerrain = new THREE.PlaneGeometry( 10000, 6000, 50 , 50 );
 
 				geometryTerrain.computeFaceNormals();
 				geometryTerrain.computeVertexNormals();

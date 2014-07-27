@@ -1,4 +1,5 @@
-var TIME = 0;	
+var TIME = 0;
+var frame = 0;
 
 function render() {
 
@@ -11,15 +12,15 @@ function render() {
 
         }*/
 
-      audioController.update();
-      MusicObject.update();
+     audioController.update();
+      //MusicObject.update();
                 var delta = clock.getDelta();
 
                 controls.update();
                 TIME += delta;
 				soundVal = THREE.Math.clamp( soundVal + delta * soundDir, 0, 1 );
 
-				if ( soundVal !== oldSoundVal ) {
+        		if ( soundVal !== oldSoundVal ) {
 
 					if ( soundtrack ) {
 
@@ -36,6 +37,8 @@ function render() {
 
 					time = Date.now() * 0.001;
 
+                    	//if ( frame <= 20 ) {
+
 					var fLow = 0.1, fHigh = 0.8;
 
 					lightVal = THREE.Math.clamp( lightVal + 0.5 * delta * lightDir, fLow, fHigh );
@@ -44,15 +47,16 @@ function render() {
 
 					//scene.fog.color.setHSL( 0.1, 0.5, lightVal );
 
-					renderer.setClearColor( scene.fog.color, 1 );
+					//renderer.setClearColor( scene.fog.color, 1 );
 
 					directionalLight.intensity = THREE.Math.mapLinear( valNorm, 0, 1, 0.1, 1.15 );
 					pointLight.intensity = THREE.Math.mapLinear( valNorm, 0, 1, 0.9, 1.5 );
-
 					uniformsTerrain[ "uNormalScale" ].value = THREE.Math.mapLinear( valNorm, 0, 1, 0.1, 3.5 );
 
-					if ( updateNoise ) {
 
+                    if ( frame <= 20 ) {
+
+                      console.log('FRNAMS');
 						animDelta = THREE.Math.clamp( animDelta + 0.00075 * animDeltaDir, 0, 0.05 );
 						uniformsNoise[ "time" ].value += delta * animDelta;
 
@@ -68,51 +72,19 @@ function render() {
 
 						//updateNoise = false;
 
-					}
-
-
-					for ( var i = 0; i < morphs.length; i ++ ) {
-
-						morph = morphs[ i ];
-
-						morph.updateAnimation( 1000 * delta );
-
-						morph.position.x += morph.speed * delta;
-
-						if ( morph.position.x  > 2000 )  {
-
-							morph.position.x = -1500 - Math.random() * 500;
-
-						}
-
-
-					}
-                                    renderer.autoClearColor = true;
-                    composer.reset();
-
-                    //model.material = depthMaterial;
-                    composer.render( scene, camera );
-                    composer.toTexture( depthTexture );
-
-                    //model.material = modelMaterial;
-                    composer.render( scene, camera );
-
-                    if( guidedFullBoxBlurPass.isLoaded() ) {
-                        guidedFullBoxBlurPass.guidedBoxPass.shader.uniforms.isPacked.value = true;
-                        guidedFullBoxBlurPass.guidedBoxPass.shader.uniforms.tBias.value = depthTexture;
+					}else{
+                    // scene.remove(terrain ); //terrain.visable = false;
                     }
-                    
-                    composer.pass( vignettePass );
-                    composer.pass( multiPassBloomPass );
-                    //composer.pass( guidedFullBoxBlurPass );
-                    //composer.pass( dirtPass );
 
-                    composer.toScreen();
 
-					//renderer.render( scene, camera );
+                  }
+		
+//}
+					renderer.render( scene, camera );
 					//composer.render( 0.1 );
 
-				}
+
+                frame ++;
 
 			}
 

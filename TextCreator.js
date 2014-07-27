@@ -3,8 +3,8 @@ function TextCreator( size ){
 
     this.params = {
    
-      size:                 size,
-      type:                    "20pt GeoSans", 
+      size:                                 size,
+      type:                       "20pt GeoSans", 
       color:    "rgba( 255 , 255 , 255 , 0.95 )",
       crispness:                              2,
       margin:               size / 2,  

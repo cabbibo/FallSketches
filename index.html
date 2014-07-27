@@ -112,13 +112,6 @@ I love you.
 		<script src="js/shaders/NormalMapShader.js"></script>
 		<script src="js/shaders/VerticalTiltShiftShader.js"></script>
 
-		<script src="js/postprocessing/EffectComposer.js"></script>
-		<script src="js/postprocessing/RenderPass.js"></script>
-		<script src="js/postprocessing/BloomPass.js"></script>
-		<script src="js/postprocessing/ShaderPass.js"></script>
-		<script src="js/postprocessing/MaskPass.js"></script>
-		<script src="js/postprocessing/SavePass.js"></script>
-
 		<script src="js/ShaderTerrain.js"></script>
 
         <script src="js/loaders/OBJLoader.js"></script>
@@ -139,7 +132,6 @@ I love you.
         <script src="fragShader1.js"></script>
         <script src="initScene.js"></script>
         <script src="initTerrain.js"></script>
-        <script src="initComposer.js"></script>
         <script src="initSongs.js"></script>
         <script src="initArch.js"></script>
         <script src="initRaycaster.js"></script>
@@ -147,8 +139,6 @@ I love you.
         <script src="helperFunctions.js"></script>
         <script src="render.js"></script>
         
-        <script src="Wagner/Wagner.js"></script>
-        <script src="Wagner/ShaderLoader.js"></script>
 
 		<script>
 
@@ -190,10 +180,9 @@ I love you.
 
               initScene();
               initTerrain();
-              initComposer();
               initArch();
-              initRaycaster();
               initMusicObject();
+              initRaycaster();
 
               //scene.add( TEXTMESH );
 

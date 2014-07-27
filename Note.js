@@ -6,12 +6,10 @@ function Note( file , controller, looping ){
   this.controller = controller;
 
   this.filter   = this.controller.ctx.createBiquadFilter();
-  this.analyzer = this.controller.ctx.createAnalyser();
-  this.analyzer.array = new Uint8Array( 1024 );
+  
   this.gain     = this.controller.ctx.createGain();
 
-  this.gain.connect( this.analyzer );
-  this.analyzer.connect( this.controller.gain );
+  this.gain.connect( this.controller.gain );
 
   this.looping = looping;
 
@@ -77,7 +75,13 @@ Note.prototype.play = function(){
   }
 
   this.playing = true;
+
+  if( this.source.noteOn ){
   this.source.noteOn(0);
+  
+  }else{
+  this.source.start();
+  }
  
   // Creates a new source for the audio right away
   // so we can play the next one with no delay
@@ -91,9 +95,16 @@ Note.prototype.play = function(){
 Note.prototype.stop = function(){
 
   this.playing = false;
-  this.source.noteOff(0);
 
-  this.createSource();
+  if( this.source.noteOff ){
+  this.source.noteOff(0);
+  
+  }else{
+  this.source.stop();
+  }
+
+
+  //this.createSource();
 
 };
 
@@ -108,15 +119,11 @@ Note.prototype.createSource = function() {
 
   //this.gain.gain.value = 1;
 
-  this.gain.connect( this.analyzer );
 
-  this.analyzer.connect( this.controller.gain );
   //this.controller.gain.connect( this.analyzer );
 
 }
 
 Note.prototype.update = function(){
-
-  this.analyzer.getByteFrequencyData( this.analyzer.array );
 
 }

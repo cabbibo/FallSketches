@@ -1,3 +1,6 @@
+
+var MMC_CENTER = new THREE.Vector3();
+
 THREE.MouseMoveControls = function ( object, domElement ) {
 
       this.object = object;

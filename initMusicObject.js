@@ -112,7 +112,7 @@ var vertexShader = [
     "offset *= NoiseSize;",
 
     "float dNoise = snoise3( offset );",
-    "vDisplacement = .5 + ( dNoise * NoisePower ) + ( a.a * AudioPower );",
+    "vDisplacement = .5 + ( dNoise * NoisePower ) + ( length( a) * AudioPower / 2. );",
     "vec3 pos = position * vDisplacement;",
     "vec4 mvPosition = modelViewMatrix * vec4( pos , 1.0 );",
     "gl_Position = projectionMatrix * mvPosition;",
@@ -178,7 +178,7 @@ function initMusicObject(){
     uniforms: uniforms,
     fragmentShader: fragmentShader,
     vertexShader:   vertexShader,
-    blending: THREE.AdditiveBlending,
+   // blending: THREE.AdditiveBlending,
     //transparent: true,
     //depthWrite: false
 
@@ -187,7 +187,7 @@ function initMusicObject(){
 
   var s = 200
   //var geometry = new THREE.CubeGeometry( s , s , s , 100 , 100 , 100 );
-  var geometry = new THREE.IcosahedronGeometry( s , 6 );
+  var geometry = new THREE.IcosahedronGeometry( s , 5 );
 
  /* var material = new THREE.MeshBasicMaterial({
     map: audioController.texture 

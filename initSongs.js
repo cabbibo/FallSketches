@@ -174,7 +174,7 @@ transparent: true,
               map: diffuseTexture1
             });
 
-            var geo = new THREE.CubeGeometry( 1 , 1, 1 , 30 , 30 , 30 );
+            var geo = new THREE.CubeGeometry( 1 , 1, 1 , 1,1,1 );
            
 
             var l = songs.length;
@@ -323,6 +323,10 @@ transparent: true,
   
               songObject.add( song );
               songObjects.push( song );
+
+              RAYCASTER_OBJECTS.push( song );
+              RAYCASTER_OBJECTS.push( song.titleMesh );
+            
               //songObjects.push( song.titleMesh );
 
             }
@@ -336,6 +340,7 @@ transparent: true,
 
 function hoverOver(){
 
+  console.log( this );
   if( !this.active ){
     this.material = hoverOverMaterial;
     this.growBar.material.opacity = 1;

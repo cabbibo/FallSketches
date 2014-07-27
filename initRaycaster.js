@@ -5,6 +5,18 @@ function initRaycaster(){
   renderer.domElement.addEventListener( 'click', onClick, false );
   projector = new THREE.Projector();
 
+  
+  RAYCASTER_OBJECTS = [];
+  for( var i = 0; i < songObjects.length; i++ ){
+
+    console.log('hellos');
+    RAYCASTER_OBJECTS.push( songObjects[i]);
+    RAYCASTER_OBJECTS.push( songObjects[i].titleMesh );
+   
+  }
+
+  raycaster = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
+  
 }
 
 function onDocumentMouseMove( event ) {
@@ -31,18 +43,23 @@ function onDocumentMouseMove( event ) {
   var vector = new THREE.Vector3( mouse.x, mouse.y, 0.5 );
   projector.unprojectVector( vector, camera );
 
-  var raycaster = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
+  raycaster.set( camera.position , vector.sub( camera.position ).normalize() );
 
   var objects = [];
-  for( var i = 0; i < songObjects.length; i++ ){
+  /*for( var i = 0; i < SONGS.length; i++ ){
 
-    objects.push( songObjects[i] );
-    objects.push( songObjects[i].titleMesh );
+    objects.push( SONGS[i].toMesh );
+    objects.push( SONGS[i].mesh );
+    objects.push( SONGS[i].titleMesh );
 
-  }
+  }*/
+
+  var objects = [];
 
 
-  var intersects = raycaster.intersectObjects( objects , true );
+
+
+  var intersects = raycaster.intersectObjects( RAYCASTER_OBJECTS , true );
 
 
 
