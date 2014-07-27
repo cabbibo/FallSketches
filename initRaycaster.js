@@ -15,7 +15,7 @@ function initRaycaster(){
    
   }
 
-  raycaster = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
+  raycaster = new THREE.Raycaster();
   
 }
 
